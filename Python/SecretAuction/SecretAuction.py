@@ -8,26 +8,11 @@ print(SecretAuctionArt.logo)
 # Empty dictionary for the auction.
 auction_dictionary = {}
 
-# Function to add bidder and respective bid price.
-def auction(bidder, price):
-  auction_dictionary[bidder] = price
-
+# End while loop condition.
 end_auction = False
-while not end_auction:
 
-  # Ask for Name Input
-  bidder_name = input("What is your name? ").lower()
- 
-  # Ask for Bid Price
-  bid_price = int(input("What is your bid? "))
-
-  # Add Name and Bid into Dictionary - Key / Value
-  auction(bidder_name, bid_price)
-
-  # Ask if there are other users who would like to bid.
-  continue_auction = input("Are there any others who would like to bid?\nYes (Y) - No (N)\n").lower()
-  if continue_auction == 'no' or continue_auction == 'n':
-    # Finds the highest bidder.
+# Function to add bidder and respective bid price.
+def auction(record_of_bid):
     name = ''
     bid_price = 0
     for bidder in auction_dictionary:
@@ -39,8 +24,27 @@ while not end_auction:
     # print(auction_dictionary)
     print("End of the auction.")
     print(f"The winner of the auction is {name.capitalize()} with a bid price of ${bid_price}.")
+
+
+
+while not end_auction:
+
+  # Ask for Name Input
+  bidder_name = input("What is your name? ").lower()
+
+  # Ask for Bid Price
+  bid_price = int(input("What is your bid? "))
+
+  # Add to the auction dictionary.
+  auction_dictionary[bidder_name] = bid_price
+
+  # Ask if there are other users who would like to bid.
+  continue_auction = input("Are there any others who would like to bid?\nYes (Y) - No (N)\n").lower()
+  if continue_auction == 'no' or continue_auction == 'n':
     end_auction = True
-  else:
+    # Finds the highest bidder.
+    auction(auction_dictionary)
+  elif continue_auction == 'yes' or continue_auction == 'y':
     # Adds another bidder.
     # clear()
     # print(auction_dictionary)
