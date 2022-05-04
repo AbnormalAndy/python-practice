@@ -1,11 +1,7 @@
 import random
 from BlackjackArt import logo
 
-
-
 cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
-
-
 
 def draw(num):
   """Draw a chosen number of cards randomly."""
@@ -48,8 +44,6 @@ def outcome(decision, player, player_total, dealer, dealer_total):
     print(f"You have {player_hand}: {player_hand_total}.")
     print(f"The dealer has {dealer_hand}: {dealer_hand_total}.\n")
 
-
-
 def dealer():
   """Dealer hand."""
   dealer_hand = draw(2)
@@ -81,8 +75,6 @@ def dealer():
       return dealer_hand
     # If conditions not met above, dealer draws a card.
     dealer_hand += draw(1)
-
-
 
 def blackjack():
   # Dealer hand and total.
