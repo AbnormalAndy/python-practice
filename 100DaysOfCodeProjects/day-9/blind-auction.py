@@ -5,7 +5,7 @@ system('clear')
 print("\nWelcome to the SECRET AUCTION!\n")
 
 
-secret_auction = {}
+blind_auction = {}
 
 
 finish_auction = False
@@ -14,7 +14,7 @@ finish_auction = False
 while finish_auction != True:
     name = input("What is your name?\n")
     bid = int(input("What is your bid?\n"))
-    secret_auction[name] = bid
+    blind_auction[name] = bid
 
 
     additional_bidders = input("Are there any other bidders? \"Yes\" or \"No\"\n")
@@ -25,14 +25,14 @@ while finish_auction != True:
         highest_bidder = {}
 
 
-        for bidder in secret_auction:
-            if secret_auction[bidder] > highest_bid:
-                highest_bid = secret_auction[bidder]
+        for bidder in blind_auction:
+            if blind_auction[bidder] > highest_bid:
+                highest_bid = blind_auction[bidder]
 
         
-        for bidder in secret_auction:
-            if secret_auction[bidder] == highest_bid:
-                highest_bidder[bidder] = secret_auction[bidder]
+        for bidder in blind_auction:
+            if blind_auction[bidder] == highest_bid:
+                highest_bidder[bidder] = blind_auction[bidder]
 
 
         if len(highest_bidder) > 1:
