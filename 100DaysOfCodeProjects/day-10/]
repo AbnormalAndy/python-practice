@@ -28,7 +28,7 @@ def calculation(operator, number_one, number_two):
         case "/":
             return division(number_one, number_two)
         case _:
-            return False
+            return "Invalid operator choice! Please choose:\n+\n-\n*\n/"
 
 
 number1 = 15
@@ -46,6 +46,5 @@ print(calculation("", number1, number2))
 # What's the first number?
 # Pick an operation? + - * /
 # What's the next number?
-# Return FALSE should repeat previous numbers.
 
 
