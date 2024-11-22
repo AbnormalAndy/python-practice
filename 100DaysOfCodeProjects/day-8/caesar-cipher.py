@@ -22,15 +22,16 @@ while end_program != True:
         for letter in phrase:
             if letter == " ":
                 secret_cipher += " "
-            if user_decision.lower() == "encode":
+            elif user_decision.lower() == "encode":
                 total = list_alphabet.index(letter) + shift
                 if total > 25:
                     total = total - 26
-            if user_decision.lower() == "decode":
+                secret_cipher += list_alphabet[total]
+            elif user_decision.lower() == "decode":
                 total = list_alphabet.index(letter) - shift
                 if total < -25:
                     total = total + 26
-            secret_cipher += list_alphabet[total]
+                secret_cipher += list_alphabet[total]
 
 
 
