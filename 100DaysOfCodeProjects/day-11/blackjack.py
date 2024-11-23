@@ -1,0 +1,83 @@
+import random
+
+
+def deal_card():
+    random_card = random.choice(cards)
+    return random_card
+
+
+def card_total(cards):
+    card_total = 0
+    for card in cards:
+        card_total += card
+    return card_total
+
+
+def hand_total(cards):
+    hand_total = card_total(cards)
+    if hand_total <= 21:
+        return hand_total
+    else:
+        for card in cards:
+            if hand_total > 21 and card == 11:
+                hand_total -= 10
+        return hand_total
+
+
+def determine_winner(player, computer):
+    if hand_total(player) > 21:
+        return False
+    elif hand_total(computer) > 21:
+        return True
+    elif hand_total(player) > hand_total(computer):
+        return True
+    else:
+        return False
+
+
+cards = [2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, 11]
+
+
+player_cards = []
+player_cards.append(deal_card())
+player_cards.append(deal_card())
+
+
+computer_cards = []
+computer_cards.append(deal_card())
+computer_cards.append(deal_card())
+
+
+print("\nWelcome to BLACKJACK!\n")
+
+
+print(f"Your cards: {player_cards}")
+print(f"Computer's first cards: {computer_cards}")
+
+
+print(player_cards)
+print(card_total(player_cards))
+print(hand_total(player_cards))
+
+
+print(computer_cards)
+print(card_total(computer_cards))
+print(hand_total(computer_cards))
+
+
+if hand_total(player_cards) == hand_total(computer_cards):
+    print(f"It is a draw!")
+    print(f"Your cards: {player_cards}")
+    print(f"Computer's final hand: {computer_cards}")
+else:
+    winner = determine_winner(player_cards, computer_cards)
+    print(winner)
+
+
+# TO-DO:
+# - Make a conditional statement before determining winner to calculate a draw.
+# - Computer must draw until at 17 or greater than stay.
+# - Player gets 21 with first two cards should immediately win unless computer has 21, then tie.
+# - Restart
+
+
