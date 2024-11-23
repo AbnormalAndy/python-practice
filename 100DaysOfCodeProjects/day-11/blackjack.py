@@ -59,6 +59,13 @@ def game_outcome(outcome):
             print(f"Your total: {hand_total(player_cards)}")
             print(f"Computer's final hand: {computer_cards}")
             print(f"Computer total: {hand_total(computer_cards)}")
+        case _:
+            print("It is a draw!")
+            print(f"Your cards: {player_cards}")
+            print(f"Your total: {hand_total(player_cards)}")
+            print(f"Computer's final hand: {computer_cards}")
+            print(f"Computer total: {hand_total(computer_cards)}")
+
             
 
 cards = [2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, 11]
@@ -80,11 +87,7 @@ print(f"Computer's first card: {computer_cards[0]}")
 
 
 if hand_total(player_cards) == hand_total(computer_cards):
-    print("It is a draw!")
-    print(f"Your cards: {player_cards}")
-    print(f"Your total: {hand_total(player_cards)}")
-    print(f"Computer's final hand: {computer_cards}")
-    print(f"Computer total: {hand_total(computer_cards)}")
+    game_outcome(0)
 else:
     winner = determine_winner(player_cards, computer_cards)
     game_outcome(winner)
