@@ -24,6 +24,16 @@ def hand_total(cards):
         return hand_total
 
 
+def computer_hand():
+    computer_hand = []
+    if hand_total(computer_hand) < 17:
+        while hand_total(computer_hand) < 17:
+            computer_hand.append(deal_card())
+        return computer_hand
+    else:
+        return_computer_hand
+
+
 def determine_winner(player, computer):
     if hand_total(player) > 21:
         return False
@@ -43,16 +53,14 @@ player_cards.append(deal_card())
 player_cards.append(deal_card())
 
 
-computer_cards = []
-computer_cards.append(deal_card())
-computer_cards.append(deal_card())
+computer_cards = computer_hand()
 
 
 print("\nWelcome to BLACKJACK!\n")
 
 
 print(f"Your cards: {player_cards}")
-print(f"Computer's first cards: {computer_cards}")
+print(f"Computer's first card: {computer_cards[0]}")
 
 
 print(player_cards)
