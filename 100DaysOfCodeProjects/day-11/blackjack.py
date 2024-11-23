@@ -24,6 +24,13 @@ def hand_total(cards):
         return hand_total
 
 
+def player_hand():
+    player_hand = []
+    player_hand.append(deal_card())
+    player_hand.append(deal_card())
+    return player_hand
+
+
 def computer_hand():
     computer_hand = []
     if hand_total(computer_hand) < 17:
@@ -48,55 +55,85 @@ def determine_winner(player, computer):
 def game_outcome(outcome):
     match outcome:
         case True:
-            print("You win!")
-            print(f"Your cards: {player_cards}")
+            print(f"\n\nYour cards: {player_cards}")
             print(f"Your total: {hand_total(player_cards)}")
-            print(f"Computer's final hand: {computer_cards}")
-            print(f"Computer total: {hand_total(computer_cards)}")
+            print(f"\nComputer's final hand: {computer_cards}")
+            print(f"Computer total: {hand_total(computer_cards)}\n")
+            print("\nYou win!\n")
         case False:
-            print("You lose!")
-            print(f"Your cards: {player_cards}")
+            print(f"\n\nYour cards: {player_cards}")
             print(f"Your total: {hand_total(player_cards)}")
-            print(f"Computer's final hand: {computer_cards}")
-            print(f"Computer total: {hand_total(computer_cards)}")
+            print(f"\nComputer's final hand: {computer_cards}")
+            print(f"Computer total: {hand_total(computer_cards)}\n")
+            print("\nYou lose!\n")
+        case 13:
+            print(f"\n\nYour cards: {player_cards}")
+            print(f"Your total: {hand_total(player_cards)}")
+            print(f"\nComputer's final hand: {computer_cards}")
+            print(f"Computer total: {hand_total(computer_cards)}\n")
+            print("\nBLACKJACK! You WIN!\n")
+        case 0:
+            print(f"\n\nYour cards: {player_cards}")
+            print(f"Your total: {hand_total(player_cards)}")
+            print(f"\nComputer's final hand: {computer_cards}")
+            print(f"Computer total: {hand_total(computer_cards)}\n")
+            print("\nIt is a draw!\n")
         case _:
-            print("It is a draw!")
-            print(f"Your cards: {player_cards}")
-            print(f"Your total: {hand_total(player_cards)}")
-            print(f"Computer's final hand: {computer_cards}")
-            print(f"Computer total: {hand_total(computer_cards)}")
-
+            print("\n\nInvalid outcome. Please evaluate code.\n")
             
 
 cards = [2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, 11]
 
 
-player_cards = []
-player_cards.append(deal_card())
-player_cards.append(deal_card())
+end_blackjack = False
 
 
-computer_cards = computer_hand()
+while end_blackjack != True:
+    player_cards = player_hand()
+    computer_cards = computer_hand()
 
 
-print("\nWelcome to BLACKJACK!\n")
+    print("\n\nBLACKJACK!\n")
 
 
-print(f"Your cards: {player_cards}")
-print(f"Computer's first card: {computer_cards[0]}")
+    print(f"\nYour cards: {player_cards}\n")
+    print(f"Computer's first card: {computer_cards[0]}\n")
 
 
-if hand_total(player_cards) == hand_total(computer_cards):
-    game_outcome(0)
-else:
-    winner = determine_winner(player_cards, computer_cards)
-    game_outcome(winner)
+    stop_adding_cards = False
 
 
-# TO-DO:
-# - Make a conditional statement before determining winner to calculate a draw.
-# - Computer must draw until at 17 or greater than stay.
-# - Player gets 21 with first two cards should immediately win unless computer has 21, then tie.
-# - Restart
+    if hand_total(player_cards) == 21:
+        stop_adding_cards = True
+
+
+    while stop_adding_cards != True:
+        another_card = input("\nType \"Yes\" for another card. Type \"No\" to pass.\n")
+        if another_card.lower() != "yes":
+            stop_adding_cards = True
+        else:
+            player_cards.append(deal_card())
+            if hand_total(player_cards) > 21:
+                stop_adding_cards = True
+            else:
+                print(f"\nYour cards: {player_cards}")
+                print(f"Your total: {hand_total(player_cards)}\n")
+
+
+    if hand_total(player_cards) == hand_total(computer_cards):
+        game_outcome(0)
+    elif hand_total(player_cards) == 21:
+        game_outcome(13)
+    else:
+        winner = determine_winner(player_cards, computer_cards)
+        game_outcome(winner)
+
+
+    continue_blackjack = input("\nDo you want to play a game of Blackjack? \"Yes\" or \"No\"\n")
+    if continue_blackjack.lower() != "yes":
+        print("\nThank you for playing BLACKJACK!\n")
+        end_blackjack = True
+    else:
+        stop_adding_cards = False
 
 
