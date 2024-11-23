@@ -45,6 +45,22 @@ def determine_winner(player, computer):
         return False
 
 
+def game_outcome(outcome):
+    match outcome:
+        case True:
+            print("You win!")
+            print(f"Your cards: {player_cards}")
+            print(f"Your total: {hand_total(player_cards)}")
+            print(f"Computer's final hand: {computer_cards}")
+            print(f"Computer total: {hand_total(computer_cards)}")
+        case False:
+            print("You lose!")
+            print(f"Your cards: {player_cards}")
+            print(f"Your total: {hand_total(player_cards)}")
+            print(f"Computer's final hand: {computer_cards}")
+            print(f"Computer total: {hand_total(computer_cards)}")
+            
+
 cards = [2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, 11]
 
 
@@ -63,23 +79,15 @@ print(f"Your cards: {player_cards}")
 print(f"Computer's first card: {computer_cards[0]}")
 
 
-print(player_cards)
-print(card_total(player_cards))
-print(hand_total(player_cards))
-
-
-print(computer_cards)
-print(card_total(computer_cards))
-print(hand_total(computer_cards))
-
-
 if hand_total(player_cards) == hand_total(computer_cards):
-    print(f"It is a draw!")
+    print("It is a draw!")
     print(f"Your cards: {player_cards}")
+    print(f"Your total: {hand_total(player_cards)}")
     print(f"Computer's final hand: {computer_cards}")
+    print(f"Computer total: {hand_total(computer_cards)}")
 else:
     winner = determine_winner(player_cards, computer_cards)
-    print(winner)
+    game_outcome(winner)
 
 
 # TO-DO:
