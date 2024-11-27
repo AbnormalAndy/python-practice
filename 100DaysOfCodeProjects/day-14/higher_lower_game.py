@@ -1,8 +1,15 @@
 import random
+import game_data
 
 
 print("HIGHER or LOWER")
 
+
+print(game_data.data[0])
+print(game_data.data[0]["name"])
+print(game_data.data[0]["follower_count"])
+print(game_data.data[0]["description"])
+print(game_data.data[0]["country"])
 
 
 # TO-DO:
