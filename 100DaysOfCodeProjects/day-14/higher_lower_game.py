@@ -1,5 +1,18 @@
-import random
 import game_data
+import os
+import random
+
+
+def outcome_choice(follower_count_one, follower_count_two, follower_count_player_choice):
+    if follower_count_one > follower_count_two and follower_count_one == follower_count_player_choice:
+        return 1
+    elif follower_count_two > follower_count_one and follower_count_two == follower_count_player_choice:
+        return 2
+    else:
+        return 3
+
+
+os.system('clear')
 
 
 print("\nHIGHER or LOWER\n")
@@ -16,50 +29,56 @@ while end_game != True:
         print(f"\nYou are right! Current score: {score}.\n")
 
 
-    # Could get the same Instagram user.
-    # TO-DO: Choose until not the same.
-    instagram_a = random.choice((game_data.data))
-    instagram_b = random.choice((game_data.data))
+    instagram_a = random.choice(game_data.data)
+    instagram_b = random.choice(game_data.data)
 
 
-    print(f"\nCompare A: {instagram_a['name']}, a {instagram_a['description']}, from {instagram_a['country']}.")
-    #print(f"Follower Count: {instagram_a['follower_count']}.\n")
-    print(f"\nCompare B: {instagram_b['name']}, a {instagram_b['description']}, from {instagram_b['country']}.")
-    #print(f"Follower Count: {instagram_b['follower_count']}.\n")
+    while instagram_a == instagram_b:
+        instagram_b = random.choice(game_data.data)
+    
+
+    valid_player_choice = False
 
 
-    # TO-DO: Make this a separate function.
-    player_choice = input("\nWho has more followers? Type 'A' or 'B': ")
-    if player_choice.lower() == "a":
-        player_choice = instagram_a
-    elif player_choice.lower() == "b":
-        player_choice = instagram_b
-    else:
-        print("Please choose again.")
+    while valid_player_choice != True:
+        print(f"\nCompare A: {instagram_a['name']}, a {instagram_a['description']}, from {instagram_a['country']}.")
+        #DEBUG Statement: print(f"Follower Count: {instagram_a['follower_count']}.")
+        print(f"\nCompare B: {instagram_b['name']}, a {instagram_b['description']}, from {instagram_b['country']}.")
+        #DEBUG Statement: print(f"Follower Count: {instagram_b['follower_count']}.")
 
 
-    # TO-DO: Refactor. Separate function?
-    if instagram_a['follower_count'] > instagram_b['follower_count']:
-        print(f"\nMore Followers ({instagram_a['follower_count']}): {instagram_a['name']}, a {instagram_a['description']}, from {instagram_a['country']}.\n")
-        if player_choice == instagram_a:
+        player_choice = input("\nWho has more followers? Type 'A' or 'B': ")
+
+
+        match player_choice.lower():
+            case "a":
+                player_choice = instagram_a
+                valid_player_choice = True
+            case "b":
+                player_choice = instagram_b
+                valid_player_choice = True
+            case _:
+                print("\nPlease choose again.")
+
+
+    outcome = outcome_choice(instagram_a['follower_count'], instagram_b['follower_count'], player_choice['follower_count'])
+    print(outcome)
+
+
+    match outcome:
+        case 1:
+            os.system('clear')
             score += 1
-        else:
-            print(f"\nSorry! That is wrong. Final score: {score}.\n")
-            end_game = True
-    else:
-        print(f"\nMore Followers ({instagram_b['follower_count']}): {instagram_b['name']}, a {instagram_b['description']}, from {instagram_b['country']}.\n")
-        if player_choice == instagram_b:
+            print(f"\nMore Followers ({instagram_a['follower_count']}): {instagram_a['name']}, a {instagram_a['description']}, from {instagram_a['country']}.")
+            print(f"\nLess Followers ({instagram_b['follower_count']}): {instagram_b['name']}, a {instagram_b['description']}, from {instagram_b['country']}.\n")
+        case 2:
+            os.system('clear')
             score += 1
-        else:
-            print(f"\nSorry! That is wrong. Final score: {score}.\n")
+            print(f"\nMore Followers ({instagram_b['follower_count']}): {instagram_b['name']}, a {instagram_b['description']}, from {instagram_b['country']}.")
+            print(f"\nLess Followers ({instagram_a['follower_count']}): {instagram_a['name']}, a {instagram_a['description']}, from {instagram_a['country']}.\n")
+        case _:
+            os.system('clear')
+            print(f"\n\nSorry! That is wrong. Final score: {score}.\n\n")
             end_game = True
-
-
-# TO-DO:
-# - Ask who has more followers on instagram.
-# - Continues until wrong answer.
-# - Display Score
-# - End game when wrong answer.
-# - Clear screen with correct or wrong guess.
 
 
