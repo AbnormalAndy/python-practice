@@ -1,14 +1,6 @@
 import menu
 
 
-resource = {
-        "water": 300,
-        "milk": 200,
-        "coffee": 100,
-        "money": 0,
-}
-
-
 def menu_choice(user_coffee_input):
     match user_coffee_input.lower():
         case "espresso":
@@ -40,17 +32,18 @@ def total_money(quarters, dimes, nickels, pennies):
     return total
 
 
-# Change from True / False to numerical solution to do match case.
-# Match case allows to be specific for the resource that does not have enough.
 def resources_check(machine_resource, machine_coffee):
+    resource_low = []
     if machine_resource['money'] < machine_coffee['cost']:
-        return False
+        return 0
     else:
         for ingredient in machine_coffee['ingredients']:
-            #print(coffee['ingredients'][ingredient])
             if machine_coffee['ingredients'][ingredient] > machine_resource[ingredient]:
-                return False
-        return True
+                resource_low.append(ingredient)
+        if len(resource_low) > 0:
+            return resource_low
+        else:
+            return 1
 
 
 def resources_sum(machine_resource, machine_coffee):
@@ -59,6 +52,14 @@ def resources_sum(machine_resource, machine_coffee):
     for ingredient in machine_coffee['ingredients']:
         resource[ingredient] = machine_resource[ingredient] - machine_coffee['ingredients'][ingredient]
     return resource
+
+
+resource = {
+        "water": 30, #300,
+        "milk": 20, #200,
+        "coffee": 100,
+        "money": 0,
+}
 
 
 choice_coffee = input("What would you like? (Espresso / Latte / Cappuccino): ")
@@ -74,7 +75,29 @@ choice_pennies = int(input("How many pennies? "))
 resource["money"] = total_money(choice_quarters, choice_dimes, choice_nickels, choice_pennies)
 
 
-print(resources_check(resource, coffee))
+resource_check = resources_check(resource, coffee)
+
+
+print(resource_check)
+print(resource)
+
+
+match resource_check:
+    case 0:
+        print("Sorry! That is not enough money. Money refunded.")
+        resource['money'] = 0
+    case 1:
+        resource = resources_sum(resource, coffee)
+    case _:
+        for item in resource_check:
+            print(f"Resource {item} is too low to make coffee.")
+
+
+# TO-DO:
+# Print Coffee
+# Keep Track of Resource
+# Create a Quit
+print(resource)
 
 
 print(f"${resource['money']:.2f}")
@@ -82,7 +105,7 @@ print(f"${resource['money']:.2f}")
 
 print(resource)
 
-resource = resources_sum(resource, coffee)
+#resource = resources_sum(resource, coffee)
 
 print(resource)
 
