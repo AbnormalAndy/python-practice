@@ -53,24 +53,7 @@ def resources_sum(machine_resource, machine_coffee):
     return resource
 
 
-# TO-DO
-# Key Points
-# - Automatic Cup Dispenser
-# - Counting Cup Selling
-
-
-# Requirement
-# - Report
-#     - Describe inventory quantity.
-# - Off
-#     - Secret word to end program.
-# - Check Resources Sufficient
-#     - Example: Sorry! There is not enough water.
-# - Process Coins
-#     - Example: Sorry! That is not enough money. Money refunded.
-# - Check Transaction Successful
-#     - Example: Here is $2.14 in change.
-# - Make Coffee
-#     - Example: Here is your espresso. Enjoy!
+def coffee_sales(coffee_number, coffee_cost):
+    return coffee_number * coffee_cost
 
 
