@@ -9,11 +9,10 @@ def menu_choice(user_coffee_input):
             return menu.MENU['latte']
         case "cappuccino":
             return menu.MENU['cappuccino']
+        case "refill":
+            print("Refilling resources...")
+            return 2
         case "report":
-            print(f"Water: {resource['water']} mL")
-            print(f"Milk: {resource['milk']} mL")
-            print(f"Coffee: {resource['coffee']} g")
-            print(f"Money: ${resource['money']:.2f}")
             return 1
         case "off":
             print(f"Shutting down...")
@@ -54,108 +53,10 @@ def resources_sum(machine_resource, machine_coffee):
     return resource
 
 
-resource = {
-        "water": 30, #300,
-        "milk": 20, #200,
-        "coffee": 100,
-        "money": 0,
-}
-
-
-choice_coffee = input("What would you like? (Espresso / Latte / Cappuccino): ")
-coffee = menu_choice(choice_coffee)
-
-
-choice_quarters = int(input("How many quarters? "))
-choice_dimes = int(input("How many dimes? "))
-choice_nickels = int(input("How many nickels? "))
-choice_pennies = int(input("How many pennies? "))
-
-
-resource["money"] = total_money(choice_quarters, choice_dimes, choice_nickels, choice_pennies)
-
-
-resource_check = resources_check(resource, coffee)
-
-
-print(resource_check)
-print(resource)
-
-
-match resource_check:
-    case 0:
-        print("Sorry! That is not enough money. Money refunded.")
-        resource['money'] = 0
-    case 1:
-        resource = resources_sum(resource, coffee)
-    case _:
-        for item in resource_check:
-            print(f"Resource {item} is too low to make coffee.")
-
-
-# TO-DO:
-# Print Coffee
-# Keep Track of Resource
-# Create a Quit
-print(resource)
-
-
-print(f"${resource['money']:.2f}")
-
-
-print(resource)
-
-#resource = resources_sum(resource, coffee)
-
-print(resource)
-
-
-print(f"${resource['money']:.2f}")
-
-
 # TO-DO
 # Key Points
-# - 3 Hot Flavors
-#     - Espresso ($1.50)
-#         - 50 mL Water
-#         - 18 g Coffee
-#     - Latte ($2.50)
-#         - 200 mL Water
-#         - 24 g Coffee
-#         - 150 mL Milk
-#     - Cappuccino ($3.00)
-#         - 250 mL Water
-#         - 24 g Coffee
-#         - 100 mL Milk
-# - Coins Operate
-#     - How many pennies?
-#         - Peny (0.01)
-#     - How many nickels?
-#         - Nickel (0.05)
-#     - How many dimes?
-#         - Dime (0.10)
-#     - How many quarters?
-#         - Quarter (0.25)
 # - Automatic Cup Dispenser
 # - Counting Cup Selling
-
-
-# Water (300 mL)
-# Milk (200 mL)
-# Coffee (100 g)
-
-
-# Analytic Table
-# - Water Inlet
-# - Coin Outlet
-# - Coin Acceptor
-# - LCD Display
-#     - Drink 1
-#     - Drink 2
-#     - Drink 3
-# - Menu
-# - Drink Outlet
-# - Waste Water Box
 
 
 # Requirement
