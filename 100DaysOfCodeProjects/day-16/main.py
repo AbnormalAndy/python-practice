@@ -16,6 +16,8 @@ coffee_maker_off = False
 
 while coffee_maker_off != True:
     choice_coffee = input("\nWhat would you like? Espresso / Latte / Cappuccino: ")
+
+
     if choice_coffee.lower() == "refill":
         coffee_maker.resource_refill()
     elif choice_coffee.lower() == "report":
