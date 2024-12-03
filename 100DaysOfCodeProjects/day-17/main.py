@@ -13,8 +13,3 @@ for i in question_data:
 print(question_bank)
 
 
-# TO-DO
-# - Question
-#     - True or False
-
-
