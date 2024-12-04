@@ -1,27 +1,43 @@
 from turtle import Turtle, Screen
 
 
-timmy_the_turtle = Turtle()
-timmy_the_turtle.shape('circle')
-timmy_the_turtle.shapesize(1, 1, 10)
-timmy_the_turtle.color('white')
+tim = Turtle()
+tim.shape('circle')
+tim.shapesize(1, 1, 10)
+tim.color('white')
 
 
-timmy_the_turtle.pencolor('black')
-timmy_the_turtle.forward(180)
+tim.pencolor('white')
+tim.penup()
+tim.forward(180)
+tim.left(90)
+tim.forward(180)
+tim.right(180)
+tim.pendown()
 
 
-timmy_the_turtle.pencolor('white')
-timmy_the_turtle.right(90)
-timmy_the_turtle.forward(180)
-timmy_the_turtle.right(90)
-timmy_the_turtle.forward(360)
-timmy_the_turtle.right(90)
-timmy_the_turtle.forward(360)
-timmy_the_turtle.right(90)
-timmy_the_turtle.forward(360)
-timmy_the_turtle.right(90)
-timmy_the_turtle.forward(180)
+# TO-DO
+# Make a SQUARE class?
+
+
+for i in range(4):
+    tim.forward(360)
+    tim.right(90)
+
+
+tim.left(90)
+
+
+for i in range(10):
+    tim.penup()
+    tim.forward(5)
+    tim.pendown()
+    tim.forward(5)
+
+
+tim.penup()
+tim.right(90)
+tim.forward(180)
 
 
 screen = Screen()
