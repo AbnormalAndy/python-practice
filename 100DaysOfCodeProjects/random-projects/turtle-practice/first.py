@@ -16,10 +16,6 @@ tim.right(180)
 tim.pendown()
 
 
-# TO-DO
-# Make a SQUARE class?
-
-
 for i in range(4):
     tim.forward(360)
     tim.right(90)
