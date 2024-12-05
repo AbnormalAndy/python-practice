@@ -12,7 +12,7 @@ tim.shapesize(0.25, 0.25)
 tim.penup()
 tim.backward(50)
 tim.left(90)
-tim.forward(100)
+tim.forward(300)
 tim.right(90)
 tim.pendown()
 
@@ -40,7 +40,7 @@ color = [
 
 
 # Range contributes to angle.
-while sides != 13:
+while sides != 25:
 
     
     tim.color(random.choice(color))
