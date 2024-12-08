@@ -1,8 +1,11 @@
 import random
-from turtle import Turtle, Screen
+import turtle as t
 
 
-turtle = Turtle()
+
+
+turtle = t.Turtle()
+t.colormode(255)
 
 
 # Define turtle to be a fast, small circle.
@@ -15,30 +18,17 @@ turtle.speed(0)
 direction = [90, 180, 270, 360]
 
 
-# List of colors.
-color = [
-    'light steel blue',
-    'royal blue',
-    'sky blue',
-    'steel blue',
-    'dark cyan',
-    'dark slate gray',
-    'medium spring green',
-    'lime green',
-    'gold',
-    'dark goldenrod',
-    'rosy brown',
-    'light pink',
-    'medium violet red',
-    'dark magenta',
-    'medium purple',
-    'indigo',
-]
+def random_color():
+    r = random.randint(0, 255)
+    g = random.randint(0, 255)
+    b = random.randint(0, 255)
+    return r, g, b
 
 
 # Randomly choices a color and direction then moves forward by 25.
 def random_walk():
-    turtle.pencolor(random.choice(color))
+    r, g, b = random_color()
+    turtle.pencolor(r, g, b)
     turtle.right(random.choice(direction))
     turtle.forward(25)
 
@@ -51,7 +41,7 @@ while walk_distance < 200:
     walk_distance += 1
 
 
-screen = Screen()
+screen = t.Screen()
 screen.exitonclick()
 
 
