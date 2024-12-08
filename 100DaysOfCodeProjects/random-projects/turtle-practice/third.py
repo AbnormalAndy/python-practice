@@ -2,8 +2,6 @@ import random
 import turtle as t
 
 
-
-
 turtle = t.Turtle()
 t.colormode(255)
 
