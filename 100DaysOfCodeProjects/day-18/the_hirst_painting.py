@@ -23,21 +23,22 @@ def painting(painting_width, painting_height):
     y = (painting_height * 50) / 2
 
 
+    # Set the beginning position in the bottom-left corner of the canvas.
     beginning_position = [-x, -y]
-
-
     turtle.teleport(beginning_position[0], beginning_position[1])
     
 
     height = 0
 
 
+    # Moves the dot to the top by 50 until it reaches the top of the canvas.
     while height < painting_height:
 
 
         width = 0
 
 
+        # Moves the dot to the right by 50 until it reaches the right of the canvas.
         while width < painting_width:
             turtle.dot(10, random_color())
             width += 1
