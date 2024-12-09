@@ -19,8 +19,8 @@ def random_color():
 
 
 def painting(painting_width, painting_height):
-    x = (painting_width / 2) * 50
-    y = (painting_height / 2) * 50
+    x = (painting_width * 50) / 2
+    y = (painting_height * 50) / 2
 
 
     beginning_position = [-x, -y]
@@ -32,13 +32,13 @@ def painting(painting_width, painting_height):
     height = 0
 
 
-    while height <= painting_height:
+    while height < painting_height:
 
 
         width = 0
 
 
-        while width <= painting_width:
+        while width < painting_width:
             turtle.dot(10, random_color())
             width += 1
             beginning_position[0] += 50
