@@ -13,11 +13,16 @@ def move_backward():
 
 
 def move_left():
-    turtle.left(5)
+    turtle.left(10)
 
 
 def move_right():
-    turtle.right(5)
+    turtle.right(10)
+
+
+def screen_clear():
+    turtle.clear()
+    turtle.teleport(0, 0)
 
 
 screen = t.Screen()
@@ -27,9 +32,13 @@ screen.onkey(move_forward, "w")
 screen.onkey(move_backward, "s")
 screen.onkey(move_left, "a")
 screen.onkey(move_right, "d")
+screen.onkey(screen_clear, "c")
 screen.listen()
 
 
 screen.exitonclick()
 
 
+# TO-DO
+# - Combine events so multiple buttons can be pressed.
+# - Add a clear button.
