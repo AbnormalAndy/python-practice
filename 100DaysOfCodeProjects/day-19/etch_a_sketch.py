@@ -39,6 +39,3 @@ screen.listen()
 screen.exitonclick()
 
 
-# TO-DO
-# - Combine events so multiple buttons can be pressed.
-# - Add a clear button.
