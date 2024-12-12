@@ -5,23 +5,47 @@ screen = Screen()
 screen.setup(width=600, height=600)
 screen.bgcolor('black')
 screen.title('Snake Game')
+screen.tracer(0)
 
 
-segment_count = 3
 segment_list = []
 
 
-position_x = 0
-position_y = 0
+starting_positions = [(0, 0), (-20, 0), (-40, 0)]
 
 
-for i in range(segment_count):
-    turtle = Turtle()
-    turtle.shape('square')
-    turtle.color('white')
-    turtle.penup()
-    turtle.teleport(position_x, position_y)
-    position_x -= 20
+for position in starting_positions:
+    segment = Turtle()
+    segment.shape('square')
+    segment.color('white')
+    segment.penup()
+    segment.goto(position)
+    segment_list.append(segment)
+
+
+screen.update()
+
+
+end = False
+
+
+while end != True:
+    for segment_number in range(len(segment_list) - 1, 0, -1):
+        new_x = segment_list[segment_number - 1].xcor()
+        new_y = segment_list[segment_number - 1].ycor()
+        segment_list[segment_number].goto(new_x, new_y)
+
+
+    segment_list[0].forward(10)
+    segment_list[0].left(90)
+
+
+    screen.update()
+
+
+    if segment_list[0].xcor() > 270:
+        end = True
+
 
 
 # Turtle in for loop.
