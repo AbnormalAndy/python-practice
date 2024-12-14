@@ -11,6 +11,7 @@ screen.tracer(0)
 segment_list = []
 
 
+# Starting positions in tuple.
 starting_positions = [(0, 0), (-20, 0), (-40, 0)]
 
 
@@ -61,8 +62,10 @@ screen.exitonclick()
 # Create snake body.
 # - 3 squares.
 # - 20x20 = Turtle
+
 # Move snake.
 # - Up, down, left, right.
+
 # Create Snake Food
 # Detect Collision with Food
 # Create Scoreboard
