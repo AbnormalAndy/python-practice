@@ -14,6 +14,7 @@ segment_list = []
 starting_positions = [(0, 0), (-20, 0), (-40, 0)]
 
 
+# Creates new segments.
 for position in starting_positions:
     segment = Turtle()
     segment.shape('square')
@@ -29,6 +30,7 @@ screen.update()
 end = False
 
 
+# Segments move together.
 while end != True:
     for segment_number in range(len(segment_list) - 1, 0, -1):
         new_x = segment_list[segment_number - 1].xcor()
