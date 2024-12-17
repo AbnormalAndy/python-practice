@@ -9,7 +9,6 @@ screen.bgcolor('black')
 screen.title('Snake Game')
 
 
-# TURN BACK ON
 screen.tracer(0)
 
 
@@ -19,6 +18,7 @@ snake = Snake()
 game_is_off = False
 
 
+# Game loop.
 while game_is_off != True:
     screen.update()
     time.sleep(0.1)
@@ -27,13 +27,14 @@ while game_is_off != True:
     snake.move()
 
 
+    # If snake runs into a wall, game loop ends.
     if snake.segments[0].xcor() > 270 or snake.segments[0].xcor() < -270:
         game_is_off = True
 
 
+    # If snake runs into a wall, game loop ends.
     if snake.segments[0].ycor() > 270 or snake.segments[0].ycor() < -270:
         game_is_off = True
-
 
 
 screen.exitonclick()
