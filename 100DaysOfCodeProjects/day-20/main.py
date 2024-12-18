@@ -35,12 +35,12 @@ while game_is_off != True:
 
 
     # If snake runs into a wall, game loop ends.
-    if snake.segments[0].xcor() > 270 or snake.segments[0].xcor() < -270:
+    if snake.segments[0].xcor() > 280 or snake.segments[0].xcor() < -280:
         game_is_off = True
 
 
     # If snake runs into a wall, game loop ends.
-    if snake.segments[0].ycor() > 270 or snake.segments[0].ycor() < -270:
+    if snake.segments[0].ycor() > 280 or snake.segments[0].ycor() < -280:
         game_is_off = True
 
 
