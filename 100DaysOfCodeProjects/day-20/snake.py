@@ -3,6 +3,10 @@ from turtle import Turtle
 
 STARTING_POSITION = [(0, 0), (-20, 0), (-40, 0)]
 MOVE_DISTANCE = 20
+UP = 90
+DOWN = 270
+LEFT = 180
+RIGHT = 0
 
 
 class Snake:
@@ -35,23 +39,25 @@ class Snake:
 
     # Sets direction up if the direction is not down.
     def up(self):
-        if self.snake_head.heading() != 270:
-            self.snake_head.setheading(90)
+        if self.snake_head.heading() != DOWN:
+            self.snake_head.setheading(UP)
 
 
     # Sets direction down if the direction is not up.
     def down(self):
-        if self.snake_head.heading() != 90:
-            self.snake_head.setheading(270)
+        if self.snake_head.heading() != UP:
+            self.snake_head.setheading(DOWN)
 
 
     # Sets direction left if the direction is not right.
     def left(self):
-        if self.snake_head.heading() != 0:
-            self.snake_head.setheading(180)
+        if self.snake_head.heading() != RIGHT:
+            self.snake_head.setheading(LEFT)
 
 
     # Sets direction right if the direction is not left.
     def right(self):
-        if self.snake_head.heading() != 180:
-            self.snake_head.setheading(0)
+        if self.snake_head.heading() != LEFT:
+            self.snake_head.setheading(RIGHT)
+
+

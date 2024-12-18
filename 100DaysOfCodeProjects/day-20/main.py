@@ -48,9 +48,6 @@ screen.exitonclick()
 
 
 # TO-DO:
-# Move snake.
-# - Up, down, left, right.
-
 # Create Snake Food
 # Detect Collision with Food
 # Create Scoreboard
