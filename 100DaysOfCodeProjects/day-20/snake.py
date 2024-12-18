@@ -32,3 +32,25 @@ class Snake:
         self.segments[0].forward(MOVE_DISTANCE)
 
 
+    # Sets direction up if the direction is not down.
+    def up(self):
+        if self.segments[0].heading() != 270:
+            self.segments[0].setheading(90)
+
+
+    # Sets direction down if the direction is not up.
+    def down(self):
+        if self.segments[0].heading() != 90:
+            self.segments[0].setheading(270)
+
+
+    # Sets direction left if the direction is not right.
+    def left(self):
+        if self.segments[0].heading() != 0:
+            self.segments[0].setheading(180)
+
+
+    # Sets direction right if the direction is not left.
+    def right(self):
+        if self.segments[0].heading() != 180:
+            self.segments[0].setheading(0)
