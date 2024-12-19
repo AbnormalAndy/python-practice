@@ -1,4 +1,5 @@
-from turtle import Turtle, Screen
+from food import Food
+from turtle import Screen
 from snake import Snake
 import time
 
@@ -13,6 +14,7 @@ screen.tracer(0)
 
 
 snake = Snake()
+food = Food()
 
 
 screen.listen()
