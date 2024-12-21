@@ -35,6 +35,11 @@ while game_is_off != True:
 
     snake.move()
 
+    
+    # If snake funs into food, move food.
+    if snake.snake_head.distance(food) < 15:
+        food.refresh()
+
 
     # If snake runs into a wall, game loop ends.
     if snake.segments[0].xcor() > 300 or snake.segments[0].xcor() < -300:
