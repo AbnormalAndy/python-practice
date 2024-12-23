@@ -13,6 +13,7 @@ screen.title('Snake Game')
 screen.tracer(0)
 
 
+# Create snake and food.
 snake = Snake()
 food = Food()
 
