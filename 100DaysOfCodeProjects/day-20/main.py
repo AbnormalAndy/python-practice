@@ -34,6 +34,7 @@ while game_is_off != True:
     time.sleep(0.1)
 
 
+    # Moves snake forward.
     snake.move()
 
     
