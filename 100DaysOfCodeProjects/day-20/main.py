@@ -19,6 +19,7 @@ snake = Snake()
 food = Food()
 
 
+# Listen for keys to move the snake.
 screen.listen()
 screen.onkey(snake.up, "Up")
 screen.onkey(snake.down, "Down")
