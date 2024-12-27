@@ -27,6 +27,7 @@ screen.onkey(snake.left, "Left")
 screen.onkey(snake.right, "Right")
 
 
+# Game loop switch.
 game_is_off = False
 
 
