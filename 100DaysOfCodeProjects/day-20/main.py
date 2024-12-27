@@ -46,8 +46,7 @@ while game_is_off != True:
     # If snake funs into food, move food.
     if snake.snake_head.distance(food) < 15:
         food.refresh()
-        scoreboard.refresh()
-        scoreboard
+        scoreboard.increase_score()
 
 
     # If snake runs into a wall, game loop ends.
