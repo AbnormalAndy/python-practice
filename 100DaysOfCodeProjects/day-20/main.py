@@ -60,12 +60,9 @@ screen.exitonclick()
 
 
 # TO-DO:
-# Create Snake Food
 # Detect Collision with Food
 # Create Scoreboard
 # Detect Collision with Wall
 # Detect Collision with Tail
 
-# Snake Class
-# Food Class
 # Scoreboard Class
