@@ -1,5 +1,6 @@
 from food import Food
 from turtle import Screen
+from scoreboard import Scoreboard
 from snake import Snake
 import time
 
@@ -14,9 +15,10 @@ screen.title('Snake Game')
 screen.tracer(0)
 
 
-# Create snake and food.
+# Create snake, food, and scoreboard.
 snake = Snake()
 food = Food()
+scoreboard = Scoreboard()
 
 
 # Listen for keys to move the snake.
@@ -44,6 +46,8 @@ while game_is_off != True:
     # If snake funs into food, move food.
     if snake.snake_head.distance(food) < 15:
         food.refresh()
+        scoreboard.refresh()
+        scoreboard
 
 
     # If snake runs into a wall, game loop ends.
