@@ -62,13 +62,15 @@ while game_is_off != True:
         game_is_off = True
 
 
+    # If snake runs into self, game loop ends.
+    for segment in snake.segments:
+        if segment == snake.snake_head:
+            pass
+        elif snake.snake_head.distance(segment) < 10:
+            scoreboard.game_over()
+            game_is_off = True
+
+
 screen.exitonclick()
 
 
-# TO-DO:
-# Detect Collision with Food
-# Create Scoreboard
-# Detect Collision with Wall
-# Detect Collision with Tail
-
-# Scoreboard Class
