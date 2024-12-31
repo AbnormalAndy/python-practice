@@ -27,3 +27,9 @@ class Paddle:
         self.segments.append(segment)
 
 
+# TO-DO
+# Move up and down.
+# - Need to iterate through the segments.
+#     - Move each segment by MOVE_DISTANCE.
+#     - Move up by leading with first position?
+#     - Move down by leading with last position?
