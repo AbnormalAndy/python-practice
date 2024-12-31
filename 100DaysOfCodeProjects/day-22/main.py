@@ -1,32 +1,23 @@
+from paddle import Paddle
+from turtle import Screen, Turtle
 
 
-# TO-DO
-# Computer Paddle
-# - Define paddle.
-#     - Define the size.
-#     - Define the shape.
-#     - PenUp()
-# - Make it move randomly.
-#     - Moves along y-axis. 
-# Player Paddle
-# - Define paddle.
-#     - Define the size.
-#     - Define the shape.
-#     - PenUp()
-# Ball
-# - Define ball.
-#     - Define the size.
-#     - Define the shape.
-#     - PenUp()
-# - Contact with paddle.
-#     - Move the opposite direction.
-#         - Opposite angle.
-# - Contact with x-axis border.
-#     - Move the opposite direction.
-#         - Opposite angle.
-# Scoreboard
-# - Score if passes the y-axis border.
-# Game Loop
-# - Score
-# - Refresh Movements
-# - "Bounce" off paddle / x-axis border.
+WIDTH, HEIGHT = 1200, 600
+
+
+screen = Screen()
+
+
+screen.title('Pong')
+screen.bgcolor('black')
+
+
+screen.setup(WIDTH + 4, HEIGHT + 8)
+
+
+paddle = Paddle()
+
+
+screen.exitonclick()
+
+
