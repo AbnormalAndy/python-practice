@@ -6,6 +6,11 @@ import time
 WIDTH, HEIGHT = 1200, 600
 
 
+STARTING_POSITION_PLAYER = [(550, 20), (550, 0), (550, -20)]
+STARTING_POSITION_COMPUTER_EASY = [(-550, 20), (-550, 0), (-550, -20)]
+STARTING_POSITION_COMPUTER_HARD = [(-550, 40), (-550, 20), (-550, 0), (-550, -20), (-550, -40)]
+
+
 screen = Screen()
 
 
@@ -19,16 +24,15 @@ screen.tracer(0)
 screen.setup(WIDTH + 4, HEIGHT + 8)
 
 
-paddle = Paddle()
-
-
-#paddle_player = paddle.create_paddle_player()
-#paddle_computer = paddle.create_paddle_computer()
+paddle_player = Paddle(STARTING_POSITION_PLAYER)
+paddle_computer = Paddle(STARTING_POSITION_COMPUTER_EASY)
 
 
 screen.listen()
-screen.onkey(paddle.move_up, "Up")
-screen.onkey(paddle.move_down, "Down")
+
+
+screen.onkey(paddle_player.move_up, "Up")
+screen.onkey(paddle_player.move_down, "Down")
 
 
 game_is_off = False
