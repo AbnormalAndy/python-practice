@@ -6,10 +6,12 @@ import time
 WIDTH, HEIGHT = 1200, 600
 
 
+# Starting position for player paddle.
 STARTING_POSITION_PLAYER_EASY = [(550, 40), (550, 20), (550, 0), (550, -20), (550, -40)]
 STARTING_POSITION_PLAYER_HARD = [(550, 20), (550, 0), (550, -20)]
 
 
+# Starting position for computer paddle.
 STARTING_POSITION_COMPUTER_EASY = [(-550, 20), (-550, 0), (-550, -20)]
 STARTING_POSITION_COMPUTER_HARD = [(-550, 40), (-550, 20), (-550, 0), (-550, -20), (-550, -40)]
 
