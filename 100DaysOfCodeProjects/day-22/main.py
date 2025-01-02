@@ -1,3 +1,4 @@
+from ball import Ball
 from paddle import Paddle
 from turtle import Screen, Turtle
 import time
@@ -32,6 +33,8 @@ screen.setup(WIDTH + 4, HEIGHT + 8)
 paddle_player = Paddle(STARTING_POSITION_PLAYER_EASY)
 paddle_computer = Paddle(STARTING_POSITION_COMPUTER_EASY)
 
+
+ball = Ball()
 
 screen.listen()
 
