@@ -35,6 +35,8 @@ paddle_computer = Paddle(STARTING_POSITION_COMPUTER_EASY)
 
 
 ball = Ball()
+heading = 45
+ball.setheading(heading)
 
 screen.listen()
 
@@ -49,6 +51,36 @@ game_is_off = False
 while game_is_off != True:
     screen.update()
 
+
+    ball.move()
+
+
+    # Y=300, -300; X=600, -600
+
+
+    # Ball bouncing but x-axis bounce is not based on where the paddle is.
+    # How to detect only paddle and not x-axis?
+    for paddle_segment in paddle_player.segments:
+        if ball.xcor() > paddle_segment.xcor() - 20:
+            heading = heading - 90
+            ball.setheading(heading)
+
+
+    for paddle_segment in paddle_computer.segments:
+        if ball.xcor() < paddle_segment.xcor() + 20:
+            heading = heading - 90
+            ball.setheading(heading)
+
+    
+    if ball.ycor() > 290:
+        heading = heading - 90
+        ball.setheading(heading)
+
+
+    if ball.ycor() < -290:
+        heading = heading - 90
+        ball.setheading(heading)
+        
 
 screen.exitonclick()
 

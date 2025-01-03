@@ -3,7 +3,7 @@ from turtle import Turtle
 
 COLOR = 'white'
 SHAPE = 'circle'
-SPEED = 'fastest'
+MOVEMENT = 2
 
 
 class Ball(Turtle):
@@ -13,7 +13,10 @@ class Ball(Turtle):
         self.color(COLOR)
         self.shape(SHAPE)
         self.shapesize(stretch_len=0.5, stretch_wid=0.5)
-        self.speed(SPEED)
+
+
+    def move(self):
+        self.forward(MOVEMENT)
 
 
 # TO-DO
