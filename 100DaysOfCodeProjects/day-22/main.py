@@ -66,17 +66,20 @@ while game_is_off != True:
             ball.setheading(heading)
 
 
+    # Ball interacts with x-axis and not just the paddle.
     for paddle_segment in paddle_computer.segments:
         if ball.xcor() < paddle_segment.xcor() + 20:
             heading = heading - 90
             ball.setheading(heading)
 
     
+    # Ball interacts with the top of the screen.
     if ball.ycor() > 290:
         heading = heading - 90
         ball.setheading(heading)
 
 
+    #  Ball interacts with the bottom of the screen.
     if ball.ycor() < -290:
         heading = heading - 90
         ball.setheading(heading)
