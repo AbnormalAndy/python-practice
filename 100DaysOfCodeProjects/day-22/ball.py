@@ -19,8 +19,3 @@ class Ball(Turtle):
         self.forward(MOVEMENT)
 
 
-# TO-DO
-# - Get ball to move.
-# - Move a set speed.
-# - Randomly determine a direction.
-# - Reflect angle when bouncing.

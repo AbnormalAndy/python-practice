@@ -88,3 +88,7 @@ while game_is_off != True:
 screen.exitonclick()
 
 
+# TO-DO
+# - Reflect ball off of paddle, not the x-axis.
+
+
