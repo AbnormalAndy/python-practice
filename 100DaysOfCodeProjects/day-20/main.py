@@ -43,7 +43,7 @@ while game_is_off != True:
     snake.move()
 
     
-    # If snake funs into food, move food.
+    # If snake runs into food, move food.
     if snake.snake_head.distance(food) < 15:
         food.refresh()
         snake.extend()
