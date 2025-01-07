@@ -58,15 +58,14 @@ while game_is_off != True:
     # Y=300, -300; X=600, -600
 
 
-    # Ball bouncing but x-axis bounce is not based on where the paddle is.
-    # How to detect only paddle and not x-axis?
+    # Ball bounces off player paddle.
     for paddle_segment in paddle_player.segments:
         if paddle_segment.distance(ball) < 15:
             heading = heading - 90
             ball.setheading(heading)
 
 
-    # Ball interacts with x-axis and not just the paddle.
+    # Ball bounces off computer paddle.
     for paddle_segment in paddle_computer.segments:
         if paddle_segment.distance(ball) < 15:
             heading = heading - 90
@@ -79,10 +78,26 @@ while game_is_off != True:
         ball.setheading(heading)
 
 
-    #  Ball interacts with the bottom of the screen.
+    # Ball interacts with the bottom of the screen.
     if ball.ycor() < -290:
         heading = heading - 90
         ball.setheading(heading)
+
+
+    # Score for computer paddle.
+    # TO-DO:
+    # - Add to scoreboard.
+    # - game_is_off after so many points?
+    if ball.xcor() > 600:
+        game_is_off = True
+
+    
+    # Score for player paddle.
+    # TO-DO:
+    # - Add to scoreboard.
+    # - game_is_off after so many points?
+    if ball.xcor() < -600:
+        game_is_off = True
         
 
 screen.exitonclick()
