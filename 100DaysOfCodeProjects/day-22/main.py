@@ -1,5 +1,6 @@
 from ball import Ball
 from paddle import Paddle
+from scoreboard import Scoreboard
 from turtle import Screen, Turtle
 import time
 
@@ -38,6 +39,9 @@ ball = Ball()
 heading = 45
 ball.setheading(heading)
 
+
+scoreboard = Scoreboard()
+
 screen.listen()
 
 
@@ -72,34 +76,46 @@ while game_is_off != True:
             ball.setheading(heading)
 
     
-    # Ball interacts with the top of the screen.
-    if ball.ycor() > 290:
-        heading = heading - 90
-        ball.setheading(heading)
-
-
     # Ball interacts with the bottom of the screen.
     if ball.ycor() < -290:
         heading = heading - 90
         ball.setheading(heading)
 
 
+    # Ball interacts with the top of the screen.
+    if ball.ycor() > 290:
+        heading = heading - 90
+        ball.setheading(heading)
+
+
+    # Score for player paddle.
+    if ball.xcor() < -600:
+        scoreboard.increase_score_player()
+        ball.refresh()
+        time.sleep(2)
+
+
     # Score for computer paddle.
-    # TO-DO:
-    # - Add to scoreboard.
-    # - game_is_off after so many points?
     if ball.xcor() > 600:
+        scoreboard.increase_score_computer()
+        ball.refresh()
+        time.sleep(2)
+
+
+    # Player wins.
+    # TO-DO: Print winner.
+    if scoreboard.score_player == 2:
         game_is_off = True
 
-    
-    # Score for player paddle.
-    # TO-DO:
-    # - Add to scoreboard.
-    # - game_is_off after so many points?
-    if ball.xcor() < -600:
+
+    # Computer wins.
+    # TO-DO: Print winner.
+    if scoreboard.score_computer == 2:
         game_is_off = True
-        
+
 
 screen.exitonclick()
 
 
+# TO-DO
+# - Respawn ball.

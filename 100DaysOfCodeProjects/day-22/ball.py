@@ -3,7 +3,7 @@ from turtle import Turtle
 
 COLOR = 'white'
 SHAPE = 'circle'
-MOVEMENT = 2
+MOVEMENT = 3
 
 
 class Ball(Turtle):
@@ -17,5 +17,9 @@ class Ball(Turtle):
 
     def move(self):
         self.forward(MOVEMENT)
+
+
+    def refresh(self):
+        self.goto(0, 0)
 
 
