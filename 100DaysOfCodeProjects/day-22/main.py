@@ -24,6 +24,10 @@ MEDIUM = 6
 HARD = 4
 
 
+# Number of wins needed to win.
+WINNER = 3
+
+
 screen = Screen()
 
 
@@ -48,6 +52,7 @@ ball.setheading(heading)
 
 scoreboard = Scoreboard()
 
+
 screen.listen()
 
 
@@ -66,39 +71,6 @@ while game_is_off != True:
     ball.move()
 
 
-    # Y=300, -300; X=600, -600
-
-
-    # Ball bounces off player paddle.
-    for paddle_segment in paddle_player.segments:
-        if paddle_segment.distance(ball) < 15:
-            heading = heading - 90
-            ball.setheading(heading)
-
-
-    # Ball bounces off computer paddle.
-    for paddle_segment in paddle_computer.segments:
-        if paddle_segment.distance(ball) < 15:
-            heading = heading - 90
-            ball.setheading(heading)
-
-    
-    # Ball interacts with the bottom of the screen.
-    if ball.ycor() < -290:
-        heading = heading - 90
-        ball.setheading(heading)
-
-
-    # Ball interacts with the top of the screen.
-    if ball.ycor() > 290:
-        heading = heading - 90
-        ball.setheading(heading)
-
-
-    print(ball.ycor())
-    print(paddle_computer.segments[1].ycor())
-
-
     # Moves computer paddle. Counter delays computer input to not automatically win.
     if counter == EASY:
         if paddle_computer.segments[1].ycor() >= 0 and paddle_computer.segments[1].ycor() < ball.ycor():
@@ -111,6 +83,34 @@ while game_is_off != True:
             paddle_computer.move_down()
 
         counter = 0
+
+
+    # Ball bounces off player paddle.
+    for paddle_segment in paddle_player.segments:
+        if paddle_segment.distance(ball) < 20:
+            heading = heading - 90
+            ball.setheading(heading)
+            ball.move()
+
+
+    # Ball bounces off computer paddle.
+    for paddle_segment in paddle_computer.segments:
+        if paddle_segment.distance(ball) < 20:
+            heading = heading - 90
+            ball.setheading(heading)
+            ball.move()
+
+    
+    # Ball interacts with the bottom of the screen.
+    if ball.ycor() < -290:
+        heading = heading - 90
+        ball.setheading(heading)
+
+
+    # Ball interacts with the top of the screen.
+    if ball.ycor() > 290:
+        heading = heading - 90
+        ball.setheading(heading)
 
 
     # Score for player paddle.
@@ -128,13 +128,13 @@ while game_is_off != True:
 
 
     # Player wins.
-    if scoreboard.score_player == 2:
+    if scoreboard.score_player == WINNER:
         game_is_off = True
         scoreboard.game_over(scoreboard.player)
 
 
     # Computer wins.
-    if scoreboard.score_computer == 2:
+    if scoreboard.score_computer == WINNER:
         game_is_off = True
         scoreboard.game_over(scoreboard.computer)
 
@@ -145,5 +145,7 @@ while game_is_off != True:
 screen.exitonclick()
 
 
-# TO-DO
-# - Deflecting ball off paddle is a full 180 when it should be 90?
+# BUGS
+# - Ball gets caught in the paddle.
+# - Ball phases through paddle.
+#     - Iterates through segments and continuously changes heading.
