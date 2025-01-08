@@ -92,30 +92,28 @@ while game_is_off != True:
     if ball.xcor() < -600:
         scoreboard.increase_score_player()
         ball.refresh()
-        time.sleep(2)
+        time.sleep(1.5)
 
 
     # Score for computer paddle.
     if ball.xcor() > 600:
         scoreboard.increase_score_computer()
         ball.refresh()
-        time.sleep(2)
+        time.sleep(1.5)
 
 
     # Player wins.
-    # TO-DO: Print winner.
     if scoreboard.score_player == 2:
         game_is_off = True
+        scoreboard.game_over(scoreboard.player)
 
 
     # Computer wins.
-    # TO-DO: Print winner.
     if scoreboard.score_computer == 2:
         game_is_off = True
+        scoreboard.game_over(scoreboard.computer)
 
 
 screen.exitonclick()
 
 
-# TO-DO
-# - Respawn ball.

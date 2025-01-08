@@ -3,7 +3,7 @@ from turtle import Turtle
 
 COLOR = 'white'
 SHAPE = 'circle'
-MOVEMENT = 3
+MOVEMENT = 5
 
 
 class Ball(Turtle):

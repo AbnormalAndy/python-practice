@@ -5,6 +5,10 @@ ALIGNMENT = 'center'
 FONT = ('futura', 36, 'normal')
 
 
+PLAYER_ONE = 'player'
+PLAYER_TWO = 'computer'
+
+
 class Scoreboard(Turtle):
     def __init__(self):
         super().__init__()
@@ -13,6 +17,8 @@ class Scoreboard(Turtle):
         self.color('white')
         self.score_player = 0
         self.score_computer = 0
+        self.player = PLAYER_ONE
+        self.computer = PLAYER_TWO
         self.update_score()
 
 
@@ -30,5 +36,10 @@ class Scoreboard(Turtle):
         self.score_computer += 1
         self.clear()
         self.update_score()
+
+
+    def game_over(self, player):
+        self.teleport(0, 0)
+        self.write(f"{player.capitalize()} wins!", align=ALIGNMENT, font=FONT)
 
 
