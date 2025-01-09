@@ -148,4 +148,3 @@ screen.exitonclick()
 # BUGS
 # - Ball gets caught in the paddle.
 # - Ball phases through paddle.
-#     - Iterates through segments and continuously changes heading.
