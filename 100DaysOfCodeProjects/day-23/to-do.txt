@@ -14,5 +14,6 @@
 
 - Scoreboard
     - Level in top left of screen.
+    - Print GAME OVER.
 
 
