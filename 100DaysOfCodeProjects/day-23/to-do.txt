@@ -1,0 +1,18 @@
+# TO-DO
+
+- Turtle starts at bottom of screen.
+    - Can move forward, left, and right.
+    - Resets at the beginning upon completing the level.
+    - Collision with car is GAME OVER.
+
+
+- Randomly generated cars going across the screen from right to left.
+    - Cars speed up upon completing the level.
+    - Cars should be one turtle.
+        - Adjust the .shapesize().
+
+
+- Scoreboard
+    - Level in top left of screen.
+
+
