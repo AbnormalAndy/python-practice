@@ -87,30 +87,26 @@ while game_is_off != True:
 
     # Ball bounces off player paddle.
     for paddle_segment in paddle_player.segments:
-        if paddle_segment.distance(ball) < 20:
-            heading = heading - 90
-            ball.setheading(heading)
+        if paddle_segment.distance(ball) < 20 and ball.xcor() > 540 or ball.ycor() == paddle_segment.ycor() + 10:
+            ball.bounce_x()
             ball.move()
 
 
     # Ball bounces off computer paddle.
     for paddle_segment in paddle_computer.segments:
-        if paddle_segment.distance(ball) < 20:
-            heading = heading - 90
-            ball.setheading(heading)
+        if paddle_segment.distance(ball) < 20 and ball.xcor() < -540 or ball.ycor() == paddle_segment.ycor() + 10:
+            ball.bounce_x()
             ball.move()
 
     
     # Ball interacts with the bottom of the screen.
-    if ball.ycor() < -290:
-        heading = heading - 90
-        ball.setheading(heading)
+    if ball.ycor() < -280:
+        ball.bounce_y()
 
 
     # Ball interacts with the top of the screen.
-    if ball.ycor() > 290:
-        heading = heading - 90
-        ball.setheading(heading)
+    if ball.ycor() > 280:
+        ball.bounce_y()
 
 
     # Score for player paddle.
@@ -145,6 +141,6 @@ while game_is_off != True:
 screen.exitonclick()
 
 
-# BUGS
+# POSSIBLE BUGS
 # - Ball gets caught in the paddle.
-# - Ball phases through paddle.
+# - Ball phases through paddle..
