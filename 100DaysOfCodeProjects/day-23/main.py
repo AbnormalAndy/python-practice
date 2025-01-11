@@ -1,4 +1,5 @@
 from frog import Frog
+from scoreboard import Scoreboard
 from turtle import Screen
 
 
@@ -19,6 +20,7 @@ screen.setup(WIDTH + 4, HEIGHT + 8)
 
 
 frog = Frog()
+scoreboard = Scoreboard()
 
 
 screen.listen()
@@ -37,7 +39,10 @@ while game_is_off != True:
 
 
     if frog.ycor() > 270:
+        scoreboard.increase_level()
         frog.reset()
 
 
 screen.exitonclick()
+
+
