@@ -9,10 +9,12 @@ import random
 WIDTH, HEIGHT = 600, 600
 
 
+# XCOR and YCOR for cars beginning on the right and moving left.
 XCOR_POSITION_LEFT = 350
 YCOR_POSITION_LEFT = [250, 210, 170, 130, 90, 50, -50, -90, -130, -170, -210, -250]
 
 
+# XCOR and YCOR for cars beginning on the left and moving right.
 XCOR_POSITION_RIGHT = -350
 YCOR_POSITION_RIGHT = [230, 190, 150, 110, 70, 30, -30, -70, -110, -150, -190, -230]
 
