@@ -33,6 +33,7 @@ screen.tracer(0)
 screen.setup(WIDTH + 4, HEIGHT + 8)
 
 
+# Cars spawn from right and move left.
 car_list_left = []
 
 
@@ -45,6 +46,7 @@ for i in range(1000):
         car.move_car_left()
 
 
+# Cars spawn from left and move right.
 car_list_right = []
 
 
@@ -77,6 +79,7 @@ while game_is_off != True:
     screen.update()
 
 
+    # Resets frog and increases car speed after completing the level.
     if frog.ycor() > 270:
         scoreboard.increase_level()
         frog.reset()
@@ -89,6 +92,7 @@ while game_is_off != True:
             car.increase_speed()
 
 
+    # Move cars from right to the left as well as detect collision with frog.
     for car in car_list_left:
         if car.distance(frog) < 20:
             scoreboard.game_over()
@@ -107,6 +111,7 @@ while game_is_off != True:
         car.move_car_left()
 
         
+    # Move cars from left to the right as well as detect collision with frog.
     for car in car_list_right:
         if car.distance(frog) < 20:
             scoreboard.game_over()
