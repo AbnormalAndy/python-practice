@@ -13,6 +13,7 @@ class Frog(Turtle):
     def __init__(self):
         super().__init__()
         self.shape(SHAPE)
+        self.shapesize(stretch_wid=0.5, stretch_len=0.5)
         self.color(COLOR)
         self.setheading(90)
         self.penup()
