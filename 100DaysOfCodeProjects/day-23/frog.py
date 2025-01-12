@@ -20,23 +20,27 @@ class Frog(Turtle):
         self.goto(START)
 
 
+    # Move frog up.
     def move_up(self):
         y_new = self.ycor() + MOVE
         self.goto(self.xcor(), y_new)
 
 
+    # Move frog right.
     def move_right(self):
         if self.xcor() < 270:
             x_new = self.xcor() + MOVE
             self.goto(x_new, self.ycor())
 
 
+    # Move frog left.
     def move_left(self):
         if self.xcor() > -270:
             x_new = self.xcor() - MOVE
             self.goto(x_new, self.ycor())
 
 
+    # Reset frog to the original starting position.
     def reset(self):
         self.goto(START)
 

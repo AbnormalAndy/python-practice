@@ -6,6 +6,7 @@ from turtle import Screen
 import random
 
 
+# Width and height of screen.
 WIDTH, HEIGHT = 600, 600
 
 
@@ -19,20 +20,22 @@ XCOR_POSITION_RIGHT = -350
 YCOR_POSITION_RIGHT = [230, 190, 150, 110, 70, 30, -30, -70, -110, -150, -190, -230]
 
 
+# Colors for cars.
 COLOR = ['cornflower blue', 'light sky blue', 'turquoise', 'spring green', 'gold', 'moccasin', 'tomato', 'salmon', 'pink', 'pale violet red']
 
 
 screen = Screen()
 
 
+# Screen title and background color.
 screen.title('Turtle Crossing')
 screen.bgcolor('black')
 
 
-screen.tracer(0)
-
-
 screen.setup(WIDTH + 4, HEIGHT + 8)
+
+
+screen.tracer(0)
 
 
 # Cars spawn from right and move left.
@@ -69,6 +72,7 @@ scoreboard = Scoreboard()
 screen.listen()
 
 
+# Keys to move frog.
 screen.onkey(frog.move_up, "Up")
 screen.onkey(frog.move_right, "Right")
 screen.onkey(frog.move_left, "Left")

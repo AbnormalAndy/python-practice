@@ -22,16 +22,19 @@ class Scoreboard(Turtle):
         self.update_scoreboard()
 
 
+    # Write the scoreboard.
     def update_scoreboard(self):
         self.write(f"Level: {self.score}", align=ALIGN_SCOREBOARD, font=FONT) 
 
 
+    # Increase level, clear old scoreboard, and write new scoreboard.
     def increase_level(self):
         self.score += 1
         self.clear()
         self.update_scoreboard()
 
 
+    # Write game over.
     def game_over(self):
         self.teleport(0, -20)
         self.write(f"GAME OVER", align=ALIGN_GAME_OVER, font=FONT)
