@@ -18,7 +18,11 @@ screen.tracer(0)
 # Create snake, food, and scoreboard.
 snake = Snake()
 food = Food()
+
+
+# Create scoreboard and read high score.
 scoreboard = Scoreboard()
+scoreboard.high_score_read()
 
 
 # Listen for keys to move the snake.
@@ -67,6 +71,10 @@ while game_is_off != True:
         if snake.snake_head.distance(segment) < 10:
             scoreboard.game_over()
             game_is_off = True
+
+
+# Write new high score if there is one.
+scoreboard.high_score_write()
 
 
 screen.exitonclick()

@@ -1,4 +1,5 @@
 from turtle import Turtle
+import os
 
 
 # Constants
@@ -13,13 +14,14 @@ class Scoreboard(Turtle):
         self.teleport(0, 270)
         self.ht()
         self.color('white')
+        self.high_score = 0
         self.score = 0
         self.update_score()
 
 
     # Updates score.
     def update_score(self):
-        self.write(f"Score: {self.score}", align=ALIGNMENT, font=FONT)
+        self.write(f"Score: {self.score}  High Score: {self.high_score}", align=ALIGNMENT, font=FONT)
 
     
     def game_over(self):
@@ -33,4 +35,24 @@ class Scoreboard(Turtle):
         self.clear()
         self.update_score()
 
+
+    # Reads high_score.txt file if it exists to set the high score.
+    def high_score_read(self):
+        if os.path.exists('high_score.txt'):
+            with open('high_score.txt', mode='r') as file:
+                      high_score_string = file.read()
+            self.high_score = int(high_score_string)
+            self.clear()
+            self.update_score()
+        else:
+            self.high_score = 0
+
    
+    # Writes a new high score if there is one.
+    def high_score_write(self):
+        if self.score > self.high_score:
+            self.high_score = self.score
+        with open('high_score.txt', mode='w') as file:
+            file.write(str(self.high_score))
+
+
