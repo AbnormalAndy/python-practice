@@ -143,4 +143,4 @@ screen.exitonclick()
 
 # POSSIBLE BUGS
 # - Ball gets caught in the paddle.
-# - Ball phases through paddle..
+# - Ball phases through paddle.
