@@ -40,8 +40,7 @@ class Scoreboard(Turtle):
     def high_score_read(self):
         if os.path.exists('high_score.txt'):
             with open('high_score.txt', mode='r') as file:
-                      high_score_string = file.read()
-            self.high_score = int(high_score_string)
+                      self.high_score = int(file.read())
             self.clear()
             self.update_score()
         else:
