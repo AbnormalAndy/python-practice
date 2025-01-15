@@ -17,12 +17,14 @@ class Line(Turtle):
         self.line_stripe()
 
 
+    # Create solid lines.
     def line_solid(self):
         for i in YCOR_SOLID:
             self.teleport(350, i)
             self.goto(-350, i)
             
 
+    # Create striped lines.
     def line_stripe(self):
         for i in YCOR_STRIPE:
             self.teleport(350, i)
