@@ -24,6 +24,7 @@ class Scoreboard(Turtle):
         self.write(f"Score: {self.score}  High Score: {self.high_score}", align=ALIGNMENT, font=FONT)
 
     
+    # Prints game over in the center of the screen.
     def game_over(self):
         self.teleport(0, 0)
         self.write(f"GAME OVER", align=ALIGNMENT, font=FONT)
