@@ -1,7 +1,10 @@
 # TO-DO
-- Add a high score to the snake game.
-    - Open
-    - Read
-    - Write
+# - Create a letter using starting_letter.txt file for each name in invited.txt file.
+# - Replace the [name] placeholder with the actual name.
+# - Save the letters in the folder "ReadyToSend".
+
+# - file readlines
+# - string replace
+# - string strip
 
 
