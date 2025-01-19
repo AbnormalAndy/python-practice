@@ -1,11 +1,14 @@
+# Open and read letter file.
 with open('./Input/Letters/starting_letter.txt', 'r') as file:
     letter = file.readlines()
 
 
+# Open and read names file.
 with open('./Input/Names/invited_names.txt', 'r') as file:
     names = file.readlines()
 
 
+# Iterate through names and creating a letter with the name.
 for name in names:
     new_name = name.strip('\n')
     new_letter = [l.replace('[name]', new_name) for l in letter]
