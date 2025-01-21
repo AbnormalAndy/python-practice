@@ -14,6 +14,7 @@ for name in names:
     new_letter = [l.replace('[name]', new_name) for l in letter]
 
 
+    # Write letter to Output directory.:
     with open(f'./Output/ReadyToSend/invite_for_{new_name}.txt', mode='w') as file:
         file.writelines(new_letter)
 
