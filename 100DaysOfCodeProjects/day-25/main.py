@@ -31,7 +31,8 @@ correct_guesses_list = []
 while end_of_game != True:
 
 
-    answer_state = screen.textinput(f'{total_guesses}/50 Guess the State', prompt='What is another state\'s name?').title()
+    answer_state = screen.textinput(f'{total_guesses}/50 Guess the State',
+                                    prompt='What is another state\'s name?').title()
 
 
     if answer_state in states_list and answer_state not in correct_guesses_list:
