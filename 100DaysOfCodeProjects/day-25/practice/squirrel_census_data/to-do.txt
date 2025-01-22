@@ -1,0 +1,10 @@
+TO-DO
+- Create squirrel count CSV file.
+    - Fur Color
+        - Grey
+	- Cinnamon
+	- Black
+    - Count each color.
+- Create data frame from this data and make a CSV file.
+
+
