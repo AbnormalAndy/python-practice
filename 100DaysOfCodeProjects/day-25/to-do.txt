@@ -1,0 +1,6 @@
+TO-DO
+- Use 50_states.csv file to check user's answer.
+- If a state, print on the screen where coordinates are.
+- Count number of states correct out of 50.
+
+
