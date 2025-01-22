@@ -35,6 +35,10 @@ while end_of_game != True:
                                     prompt='What is another state\'s name?').title()
 
 
+    if answer_state == 'Exit':
+        break
+
+
     if answer_state in states_list and answer_state not in correct_guesses_list:
         x_cor = states_data[states_data.state == answer_state].x.values[0]
         y_cor = states_data[states_data.state == answer_state].y.values[0]
@@ -56,7 +60,21 @@ while end_of_game != True:
         end_of_game = True
 
 
+for state in correct_guesses_list:
+    if state in states_list:
+        states_list.remove(state)
+
+
+learn_states_dict = {
+        'state': states_list,
+}
+
+
+learn_states_df = pandas.DataFrame(learn_states_dict)
+#learn_states_df.to_csv('learn_states.csv')
+
+
 print("\nUS States Quiz")
-print(f"\nScore: {correct_guesses}/{total_guesses} Correct\n")
+print(f"\nScore: {correct_guesses}/50 Correct\n")
 
 
