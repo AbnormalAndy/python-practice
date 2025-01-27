@@ -3,7 +3,7 @@ import tkinter
 
 def miles_to_km(miles=0):
     miles = int(entry.get())
-    km = round(miles * 1.6, 2)
+    km = round(miles * 1.609, 2)
     km_label_two.config(text=km, font=('Futura', 12))
 
 
@@ -39,12 +39,5 @@ convert_button.grid(column=2, row=4)
 
 
 window.mainloop()
-
-
-# TO-DO
-# - Title: Mile to Km Converter
-# - Input Miles
-# - is equal to <number> Km
-# - Button to Calculate
 
 
