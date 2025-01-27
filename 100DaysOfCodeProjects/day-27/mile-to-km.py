@@ -2,9 +2,9 @@ import tkinter
 
 
 def miles_to_km(miles=0):
-    miles = int(entry.get())
-    km = round(miles * 1.609, 2)
-    km_label_two.config(text=km, font=('Futura', 12))
+    miles = float(entry.get())
+    km = miles * 1.609
+    km_label_two.config(text=f'{km:.2f}', font=('Futura', 12))
 
 
 window = tkinter.Tk()
