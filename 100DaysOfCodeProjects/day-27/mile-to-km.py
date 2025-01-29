@@ -21,18 +21,22 @@ entry.insert(0, "0")
 entry.grid(column=2, row=2)
 
 
+# Label for miles.
 miles_label = tkinter.Label(text='miles', font=('Futura', 12))
 miles_label.grid(column=3, row=2)
 
 
+# Label for kilometers.
 km_label_one = tkinter.Label(text='is equal to', font=('Futura', 12))
 km_label_one.grid(column=1, row=3)
 
 
+# Label for kilometers.
 km_label_two = tkinter.Label(text="0", font=('Future', 12))
 km_label_two.grid(column=2, row=3)
 
 
+# Label for kilometers.
 km_label_three = tkinter.Label(text='km', font=('Futura', 12))
 km_label_three.grid(column=3, row=3)
 
