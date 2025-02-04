@@ -60,6 +60,7 @@ reset_button = Button(text='Reset', font=(FONT_NAME), highlightbackground=YELLOW
 reset_button.grid(column=3, row=3)
 
 
+# Keeps Window Open
 window.mainloop()
 
 
