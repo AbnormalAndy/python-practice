@@ -16,9 +16,11 @@ LONG_BREAK_MIN = 20
 
 # ---------------------------- TIMER RESET ------------------------------- # 
 
+# Timer Variable
 timer = None
 
 
+# Reset Timer Function
 def reset_timer():
 
 
@@ -26,6 +28,7 @@ def reset_timer():
     window.after_cancel(timer)
     
 
+    # Reset Variables to Default Values
     global reps
     reps = 0
     timer_label.config(text='Timer')
@@ -35,6 +38,7 @@ def reset_timer():
 
 # ---------------------------- TIMER MECHANISM ------------------------------- # 
 
+# Number Repititions
 reps = 0
 
 
@@ -46,6 +50,7 @@ def start_timer():
     reps += 1
 
 
+    # Turns Minutes to Seconds
     work_sec = WORK_MIN * 60
     short_break_sec = SHORT_BREAK_MIN * 60
     long_break_sec = LONG_BREAK_MIN * 60
