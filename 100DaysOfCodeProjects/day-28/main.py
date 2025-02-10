@@ -24,6 +24,7 @@ timer = None
 def reset_timer():
 
 
+    # Stops the Timer
     global timer
     window.after_cancel(timer)
     
@@ -46,6 +47,7 @@ reps = 0
 def start_timer():
 
 
+    # Increments the Repitition
     global reps
     reps += 1
 
