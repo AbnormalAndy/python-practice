@@ -38,6 +38,7 @@ website_label.grid(sticky = E, row=1, column=0)
 # Website Text Box
 website_entry = Entry(width=35)
 website_entry.grid(row=1, column=1, columnspan=2)
+website_entry.focus()
 
 
 # Email Label
