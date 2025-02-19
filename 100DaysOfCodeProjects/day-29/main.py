@@ -17,7 +17,11 @@ def add_information():
     website = website_entry.get()
     email = email_entry.get()
     password = password_entry.get()
-    print(website, email, password)
+    information = f'{website} | {email} | {password}\n'
+    
+
+    with open(f'data.txt', mode='a') as file:
+        file.write(information)
 
 # ---------------------------- UI SETUP ------------------------------- #
 
