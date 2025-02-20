@@ -23,6 +23,12 @@ def add_information():
     with open(f'data.txt', mode='a') as file:
         file.write(information)
 
+
+    website_entry.delete(0, 'end')
+    email_entry.delete(0, 'end')
+    password_entry.delete(0, 'end')
+
+
 # ---------------------------- UI SETUP ------------------------------- #
 
 # Window Title
@@ -57,7 +63,6 @@ email_label.grid(sticky = E, row=2, column=0)
 # Email Text Box
 email_entry = Entry(width=35)
 email_entry.grid(row=2, column=1, columnspan=2)
-email_entry.insert(0, 'Default Email')
 
 
 # Password Label
