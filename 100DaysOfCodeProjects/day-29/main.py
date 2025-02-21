@@ -20,10 +20,12 @@ def add_information():
     information = f'{website} | {email} | {password}\n'
     
 
+    # Writes information to file.
     with open(f'data.txt', mode='a') as file:
         file.write(information)
 
 
+    # Clears entry fields of text.
     website_entry.delete(0, 'end')
     email_entry.delete(0, 'end')
     password_entry.delete(0, 'end')
