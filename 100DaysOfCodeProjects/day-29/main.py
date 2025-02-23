@@ -1,4 +1,4 @@
-from tkinter import Tk, PhotoImage, Canvas, Entry, Button, Label, E
+from tkinter import Tk, PhotoImage, Canvas, Entry, Button, Label, E, messagebox
 
 
 # ---------------------------- CONSTANTS ------------------------------- #
@@ -19,14 +19,29 @@ def add_information():
     password = password_entry.get()
     information = f"{website} | {email} | {password}\n"
 
-    # Writes information to file.
-    with open(f"data.txt", mode="a") as file:
-        file.write(information)
+    if len(website) == 0 or len(email) == 0 or len(password) == 0:
+        messagebox.showinfo(
+            title="Error",
+            message="Please make sure you have not left any fields empty.",
+        )
 
-    # Clears entry fields of text.
-    website_entry.delete(0, "end")
-    email_entry.delete(0, "end")
-    password_entry.delete(0, "end")
+    else:
+        is_ok = messagebox.askokcancel(
+            title=website,
+            message=f"These are the details entered: "
+            f"\nWebsite: {website}\nEmail: {email}"
+            f"\nPassword: {password}\nIs it OK to safe?",
+        )
+
+        if is_ok:
+            # Writes information to file.
+            with open("data.txt", mode="a") as data_file:
+                data_file.write(information)
+
+            # Clears entry fields of text.
+            website_entry.delete(0, "end")
+            email_entry.delete(0, "end")
+            password_entry.delete(0, "end")
 
 
 # ---------------------------- UI SETUP ------------------------------- #
