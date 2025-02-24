@@ -17,20 +17,25 @@ def generate_password():
     symbols = ["!", "#", "$", "%", "&", "(", ")", "*", "+"]
 
 
+    # Randomly chooses a letter, symbol, and then number.
     password_list = [choice(letters) for char in range(randint(8, 10))]
     password_list += [choice(symbols) for char in range(randint(2, 4))]
     password_list += [choice(numbers) for char in range(randint(2, 4))]
 
 
+    # Shuffles password characters.
     shuffle(password_list)
 
 
+    # Joins the characters into a string from a list.
     password = "".join(password_list)
 
 
+    # Places generated password in the password entry.
     password_entry.insert(0, password)
 
 
+    # Debug
     #print(f"Your password is: {password}")
 
 
