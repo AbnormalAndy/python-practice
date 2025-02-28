@@ -1,10 +1,6 @@
 {
     "meow": {
         "email": "meowemail",
-        "password": "meowpass"
-    },
-    "meowtwo": {
-        "email": "meowtwoemail",
-        "password": "meowtwopass"
+        "password": "MEOWPASS"
     }
 }

@@ -13,6 +13,10 @@ RIGHT_JUSTIFY = "e"
 
 # Password Generator Project
 def generate_password():
+    # First delete what is in the password entry field.
+    password_entry.delete(0, "end")
+
+    
     letters = [ "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", ]
     numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
     symbols = ["!", "#", "$", "%", "&", "(", ")", "*", "+"]
@@ -48,8 +52,8 @@ def add_information():
     email = email_entry.get()
     password = password_entry.get()
     new_data = {
-        website: {
-            'email': email,
+        website.lower(): {
+            'email': email.lower(),
             'password': password,
         }
     }
@@ -89,6 +93,45 @@ def add_information():
             password_entry.delete(0, "end")
 
 
+# ---------------------------- SEARCH ------------------------------- #
+
+# Find password with website search.
+def find_password():
+    website_search = website_entry.get().lower()
+
+
+    try:
+        with open("data.json", mode="r") as data_file:
+            # Reading old data.
+            data = json.load(data_file)
+
+
+    except FileNotFoundError:
+        messagebox.showinfo(
+            title="Error",
+            message="File NOT found.",
+        )
+
+
+    else:
+        try:
+            messagebox.showinfo(
+                title=f"Information",
+                message=f"Website: {website_search}\n"
+                    f"Email: {data[website_search]["email"]}\n"
+                    f"Password: {data[website_search]["password"]}",
+            )
+            print(f"Email: {data[website_search]["email"]}")
+            print(f"Password: {data[website_search]["password"]}")
+
+
+        except KeyError:
+            messagebox.showinfo(
+                title="Error",
+                message="Website NOT found.",
+            )
+
+
 # ---------------------------- UI SETUP ------------------------------- #
 
 # Window Title
@@ -110,9 +153,14 @@ website_label.grid(sticky=E, row=1, column=0)
 
 
 # Website Text Box
-website_entry = Entry(width=35)
-website_entry.grid(row=1, column=1, columnspan=2)
+website_entry = Entry(width=21)
+website_entry.grid(row=1, column=1)
 website_entry.focus()
+
+
+# Search Button
+search_button = Button(text="Search", font=(FONT_NAME), width=13, command=find_password)
+search_button.grid(row=1, column=2)
 
 
 # Email Label
@@ -137,7 +185,7 @@ password_entry.grid(row=3, column=1)
 
 # Generate Password Button
 generate_password_button = Button(
-    text="Generate Password", font=(FONT_NAME), command=generate_password
+    text="Generate Password", font=(FONT_NAME), command=generate_password, width=13
 )
 generate_password_button.grid(row=3, column=2)
 
@@ -148,3 +196,5 @@ add_button.grid(row=4, column=1, columnspan=2)
 
 
 window.mainloop()
+
+
