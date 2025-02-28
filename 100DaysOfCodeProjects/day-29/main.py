@@ -63,22 +63,30 @@ def add_information():
 
 
     else:
-        with open("data.json", mode="r") as data_file:
-            # Reading old data.
-            data = json.load(data_file)
+        try:
+            with open("data.json", mode="r") as data_file:
+                # Reading old data.
+                data = json.load(data_file)
+
+
+        except FileNotFoundError:
+            with open("data.json", mode="w") as data_file:
+                json.dump(new_data, data_file, indent=4)
+
+
+        else:
             # Updating old data with the new data.
             data.update(new_data)
+            with open("data.json", mode="w") as data_file:
+                # Saving updated data.
+                json.dump(data, data_file, indent=4)
 
 
-        with open("data.json", mode="w") as data_file:
-            # Saving updated data.
-            json.dump(data, data_file, indent=4)
-
-
-        # Clears entry fields of text.
-        website_entry.delete(0, "end")
-        email_entry.delete(0, "end")
-        password_entry.delete(0, "end")
+        finally:
+            # Clears entry fields of text.
+            website_entry.delete(0, "end")
+            email_entry.delete(0, "end")
+            password_entry.delete(0, "end")
 
 
 # ---------------------------- UI SETUP ------------------------------- #
