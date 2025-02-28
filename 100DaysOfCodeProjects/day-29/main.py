@@ -1,5 +1,6 @@
 from tkinter import Tk, PhotoImage, Canvas, Entry, Button, Label, E, messagebox
 from random import choice, randint, shuffle
+import json
 
 
 # ---------------------------- CONSTANTS ------------------------------- #
@@ -46,7 +47,12 @@ def add_information():
     website = website_entry.get()
     email = email_entry.get()
     password = password_entry.get()
-    information = f"{website} | {email} | {password}\n"
+    new_data = {
+        website: {
+            'email': email,
+            'password': password,
+        }
+    }
 
 
     if len(website) == 0 or len(email) == 0 or len(password) == 0:
@@ -57,24 +63,22 @@ def add_information():
 
 
     else:
-        is_ok = messagebox.askokcancel(
-            title=website,
-            message=f"These are the details entered: "
-            f"\nWebsite: {website}\nEmail: {email}"
-            f"\nPassword: {password}\nIs it OK to safe?",
-        )
+        with open("data.json", mode="r") as data_file:
+            # Reading old data.
+            data = json.load(data_file)
+            # Updating old data with the new data.
+            data.update(new_data)
 
 
-        if is_ok:
-            # Writes information to file.
-            with open("data.txt", mode="a") as data_file:
-                data_file.write(information)
+        with open("data.json", mode="w") as data_file:
+            # Saving updated data.
+            json.dump(data, data_file, indent=4)
 
 
-            # Clears entry fields of text.
-            website_entry.delete(0, "end")
-            email_entry.delete(0, "end")
-            password_entry.delete(0, "end")
+        # Clears entry fields of text.
+        website_entry.delete(0, "end")
+        email_entry.delete(0, "end")
+        password_entry.delete(0, "end")
 
 
 # ---------------------------- UI SETUP ------------------------------- #

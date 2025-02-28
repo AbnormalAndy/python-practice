@@ -1,0 +1,10 @@
+{
+    "meow2": {
+        "email": "meow2@meow.com",
+        "password": "meow2pass"
+    },
+    "meow": {
+        "email": "meow@meow.com",
+        "password": "meowpass"
+    }
+}
