@@ -100,6 +100,10 @@ def find_password():
     website_search = website_entry.get().lower()
 
 
+    test_lowercase = website_search.lower()
+    assert test_lowercase == website_search, "Website search not being converted to lowercase."
+
+
     try:
         with open("data.json", mode="r") as data_file:
             # Reading old data.
@@ -116,7 +120,7 @@ def find_password():
     else:
         try:
             messagebox.showinfo(
-                title=f"Information",
+                title="Information",
                 message=f"Website: {website_search}\n"
                     f"Email: {data[website_search]["email"]}\n"
                     f"Password: {data[website_search]["password"]}",
