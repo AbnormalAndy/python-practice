@@ -1,12 +1,9 @@
-from tkinter import Tk, PhotoImage, Canvas, Entry, Button, Label, E, messagebox
+from tkinter import Tk, PhotoImage, Canvas, Button
 from random import choice
-import csv
-import json
+import pandas
 
 # ---------------------------- CONSTANTS ------------------------------- #
 
-CSV_FILE_PATH='data/french_words.csv'
-JSON_FILE_PATH='data/french_words.json'
 BACKGROUND_COLOR = "#B1DDC6"
 FONT_NAME = "Futura"
 GREEN = "#9bdeac"
@@ -15,42 +12,16 @@ YELLOW = "#f7f5dd"
 
 
 current_card = {}
-
-
-# ---------------------------- CONVERT CSV TO JSON ------------------------------- #
-
-def convert_to_json(csvFilePath, jsonFilePath):
-    # Create a Dictionary
-    json_data = {}
-
-
-    # Open a CSV reader called DictReader.
-    with open(file=csvFilePath, newline='') as csv_file:
-        csv_reader = csv.DictReader(csv_file)
-        json_data = [row for row in csv_reader]
-
-
-    with open(file=jsonFilePath, mode='w') as json_file:
-        json.dump(json_data, json_file)
-
-
-        # DEBUG
-        #print(json_data)
+to_learn = {}
 
 
 try:
-    with open(file='data/french_words.json', mode='r') as data_file:
-        french_words = json.load(data_file)
-
-
-        # DEBUG
-        #print(french_words)
-
-
+    data = pandas.read_csv('data/words_to_learn.csv')
 except FileNotFoundError:
-    convert_to_json(CSV_FILE_PATH, JSON_FILE_PATH)
-    with open(file='data/french_words.json', mode='r') as data_file:
-        french_words = json.load(data_file)
+    original_data = pandas.read_csv('data/french_words.csv')
+    to_learn = original_data.to_dict(orient='records')
+else:
+    to_learn = data.to_dict(orient='records')
 
 
 # ---------------------------- Random Card ------------------------------- # 
@@ -58,7 +29,7 @@ except FileNotFoundError:
 def random_card():
     global current_card, flip_timer
     window.after_cancel(flip_timer)
-    current_card = choice(french_words)
+    current_card = choice(to_learn)
     card_canvas.itemconfig(card, image=front_card_img)
     card_canvas.itemconfig(card_language_text,
         text='French', fill=PINK)
@@ -77,6 +48,15 @@ def flip_card():
         text='English', fill=YELLOW)
     card_canvas.itemconfig(card_word_text,
         text=f'{current_card['English']}', fill=YELLOW)
+
+
+# ---------------------------- Create Words to Learn List ------------------------------- # 
+
+def is_known():
+    to_learn.remove(current_card)
+    data = pandas.DataFrame(to_learn)
+    data.to_csv("data/words_to_learn.csv", index=False)
+    random_card()
 
 
 # ---------------------------- UI SETUP ------------------------------- #
@@ -106,7 +86,7 @@ card_canvas.grid(column=0, row=0, columnspan=2)
 # Wrong Button
 wrong_button_img = PhotoImage(file='images/wrong.png')
 wrong_button_canvas = Button(image=wrong_button_img, bg=GREEN,
-    highlightthickness=0, highlightbackground=GREEN, command=random_card)
+    highlightthickness=0, highlightbackground=GREEN, command=is_known)
 wrong_button_canvas.grid(column=0, row=1)
 
 
