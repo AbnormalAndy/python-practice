@@ -11,9 +11,13 @@ PINK = "#e2979c"
 YELLOW = "#f7f5dd"
 
 
+# ---------------------------- VARIABLES ------------------------------- #
+
 current_card = {}
 to_learn = {}
 
+
+# ---------------------------- ERROR HANDLING ------------------------------- #
 
 try:
     data = pandas.read_csv('data/words_to_learn.csv')
@@ -26,6 +30,7 @@ else:
 
 # ---------------------------- Random Card ------------------------------- # 
 
+# Draws a Random Flash Card
 def random_card():
     global current_card, flip_timer
     window.after_cancel(flip_timer)
