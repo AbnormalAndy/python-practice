@@ -18,7 +18,7 @@ now = dt.datetime.now()
 day_of_week = dt.date(now.year, now.month, now.day).weekday()
 
 
-if day_of_week != 5 or day_of_week != 6:
+if day_of_week == 0:
     random_quote = random.choice(quotes)
 
     with smtplib.SMTP(smtp, port=587) as connection:
