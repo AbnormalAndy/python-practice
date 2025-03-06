@@ -4,10 +4,6 @@ import random
 import smtplib
 
 
-with open('quotes.txt', mode='r') as quotes_file:
-    quotes = [line.rstrip() for line in quotes_file]
-
-
 app_email = mail_config.email
 password = mail_config.password
 smtp = mail_config.smtp
@@ -19,7 +15,10 @@ day_of_week = dt.date(now.year, now.month, now.day).weekday()
 
 
 if day_of_week == 0:
-    random_quote = random.choice(quotes)
+    with open('quotes.txt', mode='r') as quotes_file:
+        quotes = quotes_file.readlines()
+        random_quote = random.choice(quotes)
+
 
     with smtplib.SMTP(smtp, port=587) as connection:
         connection.set_debuglevel(1)
@@ -29,12 +28,5 @@ if day_of_week == 0:
             to_addrs=to_email,
             msg=f'Subject: Motivational Quote\n\n{random_quote}'
         )
-
-
-
-
-
-
-
 
 
