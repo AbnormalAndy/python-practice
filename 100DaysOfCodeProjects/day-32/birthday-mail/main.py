@@ -20,15 +20,18 @@ birthdays = pandas.read_csv('birthdays.csv')
 #print(birthdays)
 
 
+# Filters out birthdays based on the current month and day.
 today_birthdays = birthdays[(birthdays['day'] == now.day) & (birthdays['month'] == now.month)]
 # Used to DEBUG
 #print(today_birthdays)
 
 
+# Checks if there are any birthdyas today.
 if len(today_birthdays) == 0:
     print('There are NO birthdays today!')
 
 
+# Checks if there are multiple birthdays today.
 elif len(today_birthdays) > 1:
     print(f'There are {len(today_birthdays)} birthdays today!')
 
@@ -57,6 +60,7 @@ elif len(today_birthdays) > 1:
         print(f'Sent email to {today_birthdays['names'][count].title()}!')
 
 
+# Defaults to a single birthday.
 else:
     print('There is a birthday today!')
 
