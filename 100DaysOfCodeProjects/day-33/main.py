@@ -33,6 +33,7 @@ MY_LAT = 66.497231
 MY_LNG = 25.724880
 
 
+# Email Information
 app_email = mail_config.email
 password = mail_config.password
 smtp = mail_config.smtp
@@ -52,8 +53,9 @@ data_latitude = float(response_iss.json()['iss_position']['latitude'])
 data_longitude = float(response_iss.json()['iss_position']['longitude'])
 
 
-#if data_latitude <= 70 and data_latitude >= 60 and data_longitude <= 40 and data_longitude >= 15:
-if MY_LAT <= 70 and MY_LAT >= 60 and MY_LNG <= 40 and MY_LNG >= 15:
+if data_latitude <= 70 and data_latitude >= 60 and data_longitude <= 40 and data_longitude >= 15:
+# Used to DEBUG
+#if MY_LAT <= 70 and MY_LAT >= 60 and MY_LNG <= 40 and MY_LNG >= 15:
     print('ISS is nearby!')
     response_sunrise_sunset = requests.get(url=f'https://api.sunrise-sunset.org/json?lat={MY_LAT}&lng={MY_LNG}&formatted=0')
     response_sunrise_sunset.raise_for_status()
@@ -72,6 +74,7 @@ if MY_LAT <= 70 and MY_LAT >= 60 and MY_LNG <= 40 and MY_LNG >= 15:
     #test_time = 13
 
 
+    # Determines if it is currently night time so the ISS can be seen.
     if time_now.hour < data_sunrise_hour or time_now.hour > data_sunset_hour:
         # Used to DEBUG
         print("Night time!")
