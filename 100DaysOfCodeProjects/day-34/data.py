@@ -11,6 +11,6 @@ question_data = response_trivia.json()['results']
 
 
 # Used to DEBUG
-print(question_data)
+#print(question_data)
 
 

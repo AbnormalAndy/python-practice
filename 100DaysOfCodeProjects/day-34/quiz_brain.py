@@ -11,7 +11,7 @@ class Brain:
 
 
     def still_has_questions(self):
-        if len(self.quiz_list) != self.question_number:
+        if len(self.quiz_list) == self.question_number:
             return False
         else:
             return True

@@ -57,17 +57,27 @@ class QuizInterface:
 
     def answer_true(self):
         # BUG: If last question is check_answer, will continue to add to score.
+        # - May have fixed with the else statement.
         self.quiz.check_answer('true')
-        print(self.quiz.score)
-        if not self.quiz.still_has_questions():
+        # Used to DEBUG
+        #print(self.quiz.score)
+        if self.quiz.still_has_questions():
             self.get_next_question()
+        else:
+            self.window.quit()
+            self.window.destroy()
 
 
     def answer_false(self):
         # BUG: If last question is check_answer, will continue to add to score.
+        # - May have fixed with the else statement.
         self.quiz.check_answer('false')
-        print(self.quiz.score)
-        if not self.quiz.still_has_questions():
+        # Used to DEBUG
+        #print(self.quiz.score)
+        if self.quiz.still_has_questions():
             self.get_next_question()
+        else:
+            self.window.quit()
+            self.window.destroy()
 
 

@@ -16,14 +16,6 @@ brain = Brain(question_bank)
 ui = QuizInterface(brain)
 
 
-end_game = False
-
-
-#while end_game != True:
-#    brain.next_question()
-#    end_game = brain.still_has_questions()
-
-
 print("You have completed the quiz!")
 print(f"Final Score: {brain.score}/{brain.question_number}")
 
