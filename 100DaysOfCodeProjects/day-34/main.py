@@ -13,7 +13,7 @@ for i in question_data:
 
 
 brain = Brain(question_bank)
-ui = QuizInterface()
+ui = QuizInterface(brain)
 
 
 end_game = False
