@@ -1,3 +1,6 @@
+import html
+
+
 class Brain:
 
     def __init__(self, question_list):
@@ -14,7 +17,8 @@ class Brain:
 
 
     def next_question(self):
-        answer = input(f"Q.{self.question_number + 1}: {self.quiz_list[self.question_number].text} True / False? ")
+        quiz_question = html.unescape(self.quiz_list[self.question_number].text)
+        answer = input(f"Q.{self.question_number + 1}: {quiz_question} True / False? ")
         self.check_answer(answer, self.quiz_list[self.question_number].answer)
         self.question_number += 1
 
