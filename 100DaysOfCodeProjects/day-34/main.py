@@ -1,6 +1,7 @@
 from data import question_data
 from question_model import Question
 from quiz_brain import Brain
+from ui import QuizInterface
 
 
 question_bank = []
@@ -12,14 +13,15 @@ for i in question_data:
 
 
 brain = Brain(question_bank)
+ui = QuizInterface()
 
 
 end_game = False
 
 
-while end_game != True:
-    brain.next_question()
-    end_game = brain.still_has_questions()
+#while end_game != True:
+#    brain.next_question()
+#    end_game = brain.still_has_questions()
 
 
 print("You have completed the quiz!")
