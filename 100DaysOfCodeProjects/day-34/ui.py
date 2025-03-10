@@ -18,7 +18,7 @@ class QuizInterface:
 
         # Score
         self.score = self.quiz.score
-        self.score_label = Label(text=f'Score: {self.score}', fg='white', bg=THEME_COLOR,
+        self.score_label = Label(text='Score: 0', fg='white', bg=THEME_COLOR,
             font=('Futura', 12))
         self.score_label.grid(column=1, row=0, padx=20, pady=20)
 
@@ -51,33 +51,41 @@ class QuizInterface:
 
 
     def get_next_question(self):
-        quiz_question = self.quiz.next_question()
-        self.canvas.itemconfig(self.canvas_text, text=quiz_question)
+        self.canvas.config(bg='white')
+        if self.quiz.still_has_questions():
+            quiz_question = self.quiz.next_question()
+            self.canvas.itemconfig(self.canvas_text, text=quiz_question)
+        else:
+            self.canvas.itemconfig(self.canvas_text, text='You have reached the end of the quiz.')
+            self.true_button.config(state='disabled')
+            self.false_button.config(state='disabled')
 
 
     def answer_true(self):
-        # BUG: If last question is check_answer, will continue to add to score.
-        # - May have fixed with the else statement.
-        self.quiz.check_answer('true')
+        is_right = self.quiz.check_answer('true')
+        self.give_feedback(is_right)
         # Used to DEBUG
         #print(self.quiz.score)
-        if self.quiz.still_has_questions():
-            self.get_next_question()
-        else:
-            self.window.quit()
-            self.window.destroy()
 
 
     def answer_false(self):
-        # BUG: If last question is check_answer, will continue to add to score.
-        # - May have fixed with the else statement.
-        self.quiz.check_answer('false')
+        is_right = self.quiz.check_answer('false')
+        self.give_feedback(is_right)
+        #self.score_label.configure(text=f'Score: {self.quiz.score}')
         # Used to DEBUG
         #print(self.quiz.score)
-        if self.quiz.still_has_questions():
-            self.get_next_question()
+
+
+    def give_feedback(self, is_right):
+        if is_right:
+            self.canvas.config(bg='green')
         else:
-            self.window.quit()
-            self.window.destroy()
+            self.canvas.config(bg='red')
+
+
+        self.score_label.configure(text=f'Score: {self.quiz.score}')
+
+    
+        self.window.after(1000, self.get_next_question)
 
 
