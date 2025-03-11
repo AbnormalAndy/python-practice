@@ -10,6 +10,7 @@ class Brain:
         self.current_question = None
 
 
+    # Checks if Questions Are Available in Question Bank
     def still_has_questions(self):
         if len(self.quiz_list) == self.question_number:
             return False
@@ -17,6 +18,7 @@ class Brain:
             return True
 
 
+    # Gets Next Question in Question Bank
     def next_question(self):
         self.current_question = self.quiz_list[self.question_number]
         self.question_number += 1
@@ -24,6 +26,7 @@ class Brain:
         return f"Q.{self.question_number}: {quiz_question}"
 
 
+    # Checks if User Answer is Correct
     def check_answer(self, user_answer):
         correct_answer = self.current_question.answer
         if user_answer.lower() == correct_answer.lower():

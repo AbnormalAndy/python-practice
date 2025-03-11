@@ -44,12 +44,14 @@ class QuizInterface:
         self.false_button.grid(column=1, row=2, padx=20, pady=20)
 
 
+        # Starts with First Question
         self.get_next_question()
 
 
         self.window.mainloop()
 
 
+    # Retrieves the Next Question
     def get_next_question(self):
         self.canvas.config(bg='white')
         if self.quiz.still_has_questions():
@@ -61,6 +63,7 @@ class QuizInterface:
             self.false_button.config(state='disabled')
 
 
+    # Answer as True
     def answer_true(self):
         is_right = self.quiz.check_answer('true')
         self.give_feedback(is_right)
@@ -68,6 +71,7 @@ class QuizInterface:
         #print(self.quiz.score)
 
 
+    # Answer as False
     def answer_false(self):
         is_right = self.quiz.check_answer('false')
         self.give_feedback(is_right)
@@ -76,6 +80,7 @@ class QuizInterface:
         #print(self.quiz.score)
 
 
+    # Changes Window Color Temporarily
     def give_feedback(self, is_right):
         if is_right:
             self.canvas.config(bg='green')
