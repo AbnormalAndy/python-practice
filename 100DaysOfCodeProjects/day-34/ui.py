@@ -88,6 +88,7 @@ class QuizInterface:
             self.canvas.config(bg='red')
 
 
+        # Updates the Score
         self.score_label.configure(text=f'Score: {self.quiz.score}')
 
     
