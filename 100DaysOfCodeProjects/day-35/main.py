@@ -31,6 +31,7 @@ data_weather = response_weather.json()
 
 
 def is_it_raining(weather: list):
+    weather_description = weather['weather'][0]['description']
     date_time_list = weather['dt_txt'].split(' ')
     date = date_time_list[0]
     time = date_time_list[1]
@@ -44,7 +45,7 @@ def is_it_raining(weather: list):
         pass
     else:
         if weather['weather'][0]['id'] < 700:
-            return f'Bring an umbrella! It will be wet at {time} on {date}.'
+            return f'Bring an umbrella! There will be {weather_description} at {time} on {date}.'
         else:
             return None
 
