@@ -55,9 +55,9 @@ def weather_output(weather_result: list):
             print(weather)
 
 
-meow = map(is_it_raining, data_weather['list'])
+time_it_is_raining = map(is_it_raining, data_weather['list'])
 
 
-weather_output(list(meow))
+weather_output(list(time_it_is_raining))
 
 
