@@ -36,33 +36,42 @@ params_news = {
 }
 
 
+def determine_day():
 # Monday 0, Tuesday 1, Wednesday 2, Thursday 3, Friday 4, Saturday 5, Sunday 6
-match today.weekday():
-    # Monday: Previous stock day is minus 3. Previous previous stock day is minus 4.
-    case 0:
-        previous_stock_day = date.today() - timedelta(days=3)
-        previous_previous_stock_day = date.today() - timedelta(days=4)
-        print('Today is Monday.')
-    # Tuesday: Previous stock day is minus 1. Previous previous stock day is minus 4.
-    case 1:
-        previous_stock_day = date.today() - timedelta(days=1)
-        previous_previous_stock_day = date.today() - timedelta(days=4)
-        print('Today is Tuesday.')
-    # Saturday: Previous stock day is minus 1. Previous previous stock day is minus 2.
-    case 5:
-        previous_stock_day = date.today() - timedelta(days=1)
-        previous_previous_stock_day = date.today() - timedelta(days=2)
-        print('Today is Saturday.')
-    # Sunday: Previous stock day is minus 2. Previous previous stock day is minus 3.
-    case 6:
-        previous_stock_day = date.today() - timedelta(days=2)
-        previous_previous_stock_day = date.today() - timedelta(days=3)
-        print('Today is Sunday.')
-    # Other Days: Previous stock day is minus 1. Previous previous stock day is minus 2.
-    case _:
-        previous_stock_day = date.today() - timedelta(days=1)
-        previous_previous_stock_day = date.today() - timedelta(days=2)
-        print('Today is a day not to worry.')
+    match today.weekday():
+        # Monday: Previous stock day is minus 3. Previous previous stock day is minus 4.
+        case 0:
+            previous_stock_day = date.today() - timedelta(days=3)
+            previous_previous_stock_day = date.today() - timedelta(days=4)
+            print('Today is Monday.')
+            return previous_stock_day, previous_previous_stock_day
+        # Tuesday: Previous stock day is minus 1. Previous previous stock day is minus 4.
+        case 1:
+            previous_stock_day = date.today() - timedelta(days=1)
+            previous_previous_stock_day = date.today() - timedelta(days=4)
+            print('Today is Tuesday.')
+            return previous_stock_day, previous_previous_stock_day
+        # Saturday: Previous stock day is minus 1. Previous previous stock day is minus 2.
+        case 5:
+            previous_stock_day = date.today() - timedelta(days=1)
+            previous_previous_stock_day = date.today() - timedelta(days=2)
+            print('Today is Saturday.')
+            return previous_stock_day, previous_previous_stock_day
+        # Sunday: Previous stock day is minus 2. Previous previous stock day is minus 3.
+        case 6:
+            previous_stock_day = date.today() - timedelta(days=2)
+            previous_previous_stock_day = date.today() - timedelta(days=3)
+            print('Today is Sunday.')
+            return previous_stock_day, previous_previous_stock_day
+        # Other Days: Previous stock day is minus 1. Previous previous stock day is minus 2.
+        case _:
+            previous_stock_day = date.today() - timedelta(days=1)
+            previous_previous_stock_day = date.today() - timedelta(days=2)
+            print('Today is a day not to worry.')
+            return previous_stock_day, previous_previous_stock_day
+
+
+previous_stock_day, previous_previous_stock_day = determine_day()
 
 
 response_stock = requests.get(url=URL_STOCK_API, params=params_stock)
