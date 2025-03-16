@@ -12,7 +12,7 @@ URL_NEWS_API = 'https://newsapi.org/v2/everything'
 
 
 STOCK = "AAPL"
-COMPANY_NAME = "Apple Inc"
+COMPANY_NAME = "Apple"
 
 
 today = date.today()
@@ -27,12 +27,12 @@ params_stock = {
 
 
 params_news = {
-    'apiKey': API_KEY_NEWS,
-    'searchIn': COMPANY_NAME,
-    'from': str(today),
-    'to': str(yesterday),
+    'q': COMPANY_NAME,
+    'from': today,
+    'to': yesterday,
     'language': 'en',
     'sortBy': 'popularity',
+    'apiKey': API_KEY_NEWS,
 }
 
 
@@ -65,73 +65,70 @@ match today.weekday():
         print('Today is a day not to worry.')
 
 
-## STEP 1: Use https://www.alphavantage.co
-# When STOCK price increase/decreases by 5% between yesterday and the day before yesterday then print("Get News").
 response_stock = requests.get(url=URL_STOCK_API, params=params_stock)
 response_stock.raise_for_status()
 data_stock = response_stock.json()
 
 
-# Automate previous day - current day minus 1.
-# If no close yet, get the day before previous day as well - current day minus 2.
-# datetime module?
+# Retrieves the previous STOCK day's open and close numbers.
 previous_open = data_stock['Time Series (Daily)'][str(previous_stock_day)]['1. open']
 previous_close = data_stock['Time Series (Daily)'][str(previous_stock_day)]['4. close']
 
 
+# Retrieves the previous previous STOCK day's open and close numbers.
 previous_previous_open = data_stock['Time Series (Daily)'][str(previous_previous_stock_day)]['1. open']
 previous_previous_close = data_stock['Time Series (Daily)'][str(previous_previous_stock_day)]['4. close']
 
 
-percentage_of_change = (previous_close - previous_previous_close) / previous_close * 100
+# Calculates the change in stock price from preivous previous stock day to previous stock day.
+percentage_of_change = (float(previous_close) - float(previous_previous_close)) / float(previous_previous_close) * 100
 
 
-## STEP 2: Use https://newsapi.org
-# Instead of printing ("Get News"), actually get the first 3 news pieces for the COMPANY_NAME. 
-response_news = requests.get(url=URL_NEWS_API, params=params_news)
-response_news.raise_for_status()
-data_news = response_news.json()
+# Used to DEBUG
+#percentage_of_change = (200 - 300) / 300 * 100
 
 
-article_one_headline = data_news['articles'][0]['title']
-article_one_brief =data_news['articles'][0]['description']
+# Used to DEBUG
+#print(f'This is the previous stock day close: {previous_close}')
+#print(f'This is the previous previous stock day close: {previous_previous_close}')
+#print(f'This is the percentage of change: {percentage_of_change}')
 
 
-article_two_headline = data_news['articles'][1]['title']
-article_two_brief = data_news['articles'][1]['description']
+# Retrieves relevant news to company if stock change is greater than 10% or less than 10%.
+if percentage_of_change >= 10 or percentage_of_change <= -10:
+    response_news = requests.get(url=URL_NEWS_API, params=params_news)
+    response_news.raise_for_status()
+    data_news = response_news.json()
 
 
-article_three_headline = data_news['articles'][2]['title']
-article_three_brief = data_news['articles'][2]['description']
+    article_one_headline = data_news['articles'][0]['title']
+    article_one_brief =data_news['articles'][0]['description']
 
 
-## STEP 3: Use https://www.twilio.com
-# Send a seperate message with the percentage change and each article's title and description to your phone number. 
+    article_two_headline = data_news['articles'][1]['title']
+    article_two_brief = data_news['articles'][1]['description']
 
 
-print(f"""
-AAPL: {percentage_of_change:.2f}%
-Headline One: {article_one_headline}
-Brief One: {article_one_brief}
-
-Headline Two: {article_two_headline}
-Brief Two: {article_two_brief}
-
-Headline Three: {article_three_headline}
-Brief Three: {article_three_brief}
-""")
+    article_three_headline = data_news['articles'][2]['title']
+    article_three_brief = data_news['articles'][2]['description']
 
 
+    news_to_print = f"""
+    AAPL: {percentage_of_change:.2f}%
+    Headline One: {article_one_headline}
+    Brief One: {article_one_brief}
 
-#Optional: Format the SMS message like this: 
-"""
-AAPL: 🔺2%
-Headline: Were Hedge Funds Right About Piling Into Apple Inc. (AAPL)?. 
-Brief: We at Insider Monkey have gone over 821 13F filings that hedge funds and prominent investors are required to file by the SEC The 13F filings show the funds' and investors' portfolio positions as of March 31st, near the height of the coronavirus market crash.
-or
-"AAPL: 🔻5%
-Headline: Were Hedge Funds Right About Piling Into Apple Inc. (AAPL)?. 
-Brief: We at Insider Monkey have gone over 821 13F filings that hedge funds and prominent investors are required to file by the SEC The 13F filings show the funds' and investors' portfolio positions as of March 31st, near the height of the coronavirus market crash.
-"""
+    Headline Two: {article_two_headline}
+    Brief Two: {article_two_brief}
+
+    Headline Three: {article_three_headline}
+    Brief Three: {article_three_brief}
+    """
+
+    print(news_to_print)
+
+
+else:
+    print(f"No major changes in {COMPANY_NAME}'s stock.")
 
 
