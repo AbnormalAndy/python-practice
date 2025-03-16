@@ -141,3 +141,10 @@ else:
     print(f"No major changes in {COMPANY_NAME}'s stock.")
 
 
+# Potential BUG
+# - There will be no data if holiday, which would cause a fail to retrieve data from API.
+# Potential FIX
+# - Use list comprehension to turn the dictionary of data into a list.
+#     - This would remove the need for the datetime module.
+
+
