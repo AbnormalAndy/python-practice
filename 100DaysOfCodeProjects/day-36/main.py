@@ -19,6 +19,7 @@ today = date.today()
 yesterday = date.today() - timedelta(days=1)
 
 
+# Params used for the stock API.
 params_stock = {
     'apikey': API_KEY_STOCK,
     'function': 'TIME_SERIES_DAILY',
@@ -26,6 +27,7 @@ params_stock = {
 }
 
 
+# Params used for the news API.
 params_news = {
     'q': COMPANY_NAME,
     'from': today,
@@ -110,18 +112,22 @@ if percentage_of_change >= 10 or percentage_of_change <= -10:
     data_news = response_news.json()
 
 
+    # Article One Headline and Brief Description
     article_one_headline = data_news['articles'][0]['title']
     article_one_brief =data_news['articles'][0]['description']
 
 
+    # Article Two Headline and Brief Description
     article_two_headline = data_news['articles'][1]['title']
     article_two_brief = data_news['articles'][1]['description']
 
 
+    # Article Three Headline and Brief Description
     article_three_headline = data_news['articles'][2]['title']
     article_three_brief = data_news['articles'][2]['description']
 
 
+    # Phrase to Print
     news_to_print = f"""
     AAPL: {percentage_of_change:.2f}%
     Headline One: {article_one_headline}
@@ -134,6 +140,7 @@ if percentage_of_change >= 10 or percentage_of_change <= -10:
     Brief Three: {article_three_brief}
     """
 
+    # Prints Phrase
     print(news_to_print)
 
 
