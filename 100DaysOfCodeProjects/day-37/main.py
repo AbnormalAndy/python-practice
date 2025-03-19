@@ -9,10 +9,14 @@ PIXELA_USERNAME = config.PIXELA_USERNAME
 pixela_endpoint = 'https://pixe.la/v1/users'
 
 
-params = {
+pixela_user_params = {
     'token': PIXELA_TOKEN,
     'username': PIXELA_USERNAME,
+    'agreeTermsOfService': 'yes',
+    'notMinor': 'yes',
 }
 
 
-requests.post()
+#pixela_create_user_response = requests.post(url=pixela_endpoint, json=pixela_user_params)
+
+
