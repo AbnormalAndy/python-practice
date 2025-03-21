@@ -6,11 +6,13 @@ PIXELA_TOKEN = config.PIXELA_TOKEN
 PIXELA_USERNAME = config.PIXELA_USERNAME
 
 
+# Pixela Endpoints
 pixela_endpoint = 'https://pixe.la/v1/users'
 pixela_graph_endpoint = f'{pixela_endpoint}/{PIXELA_USERNAME}/graphs' 
 pixela_graph_post_endpoint = f'{pixela_graph_endpoint}/graphone'
 
 
+# Pixela Create User Parameters
 pixela_create_user_params = {
     'token': PIXELA_TOKEN,
     'username': PIXELA_USERNAME,
@@ -19,6 +21,7 @@ pixela_create_user_params = {
 }
 
 
+# Pixela Graph Config Parameters
 pixela_graph_config_params = {
     'id': 'graphone',
     'name': 'Drawing Graph',
@@ -28,6 +31,7 @@ pixela_graph_config_params = {
 }
 
 
+# Pixela Graph Update Parameters
 pixela_graph_post_params = {
     'date': '20250319',
     'quantity': '20',
