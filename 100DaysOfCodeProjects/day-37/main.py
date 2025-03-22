@@ -3,10 +3,12 @@ import config
 import requests
 
 
+# Token and Username Constants
 PIXELA_TOKEN = config.PIXELA_TOKEN
 PIXELA_USERNAME = config.PIXELA_USERNAME
 
 
+# Date for Today
 today = date.today()
 
 
@@ -49,13 +51,13 @@ pixela_graph_put_params = {
 }
 
 
-
-
+# Security Header
 headers = {
     'X-USER-TOKEN': PIXELA_TOKEN,
 }
 
 
+# Responses from a Post, Put, and Delete Requests
 #pixela_create_user_response = requests.post(url=pixela_endpoint, json=pixela_create_user_params)
 #pixela_create_graph_response = requests.post(url=pixela_graph_endpoint, json=pixela_graph_config_params, headers=headers)
 #pixela_post_to_graph_response = requests.post(url=pixela_graph_post_endpoint, json=pixela_graph_post_params, headers=headers) 
@@ -63,6 +65,7 @@ headers = {
 pixela_delete_to_graph_response = requests.delete(url=pixela_graph_put_endpoint, headers=headers) 
 
 
+# Prints Response
 print(pixela_delete_to_graph_response.text)
 
 
