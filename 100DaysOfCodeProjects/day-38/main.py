@@ -9,9 +9,11 @@ API_KEY = config.API_KEY
 EXERCISE_ENDPOINT = 'https://trackapi.nutritionix.com/v2/natural/exercise'
 
 
+# Input for exercise.
 exercise = input('Tell me which exercises you did: ')
 
 
+# Nutritionix Params
 exercise_params = {
     'query': exercise,
     'gender': 'female',
@@ -21,6 +23,7 @@ exercise_params = {
 }
 
 
+# Nutritionix Header Information
 exercise_header = {
     'x-app-id': APP_ID,
     'x-app-key': API_KEY,
