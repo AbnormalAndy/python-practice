@@ -9,9 +9,15 @@ API_KEY = config.API_KEY
 EXERCISE_ENDPOINT = 'https://trackapi.nutritionix.com/v2/natural/exercise'
 
 
+exercise = input('Tell me which exercises you did: ')
+
+
 exercise_params = {
-    'query': 'run for 60 minutes',
-    'gender': 'male',
+    'query': exercise,
+    'gender': 'female',
+    'weight_kg': 58.97,
+    'height_cm': 162.56,
+    'age': 30,
 }
 
 
