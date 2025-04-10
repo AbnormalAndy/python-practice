@@ -14,7 +14,7 @@ EXERCISE_ENDPOINT = 'https://trackapi.nutritionix.com/v2/natural/exercise'
 SHEETY_ENDPOINT = 'https://api.sheety.co/99857e1bc2a42bffc6f6a39865ac096e/myWorkouts/workouts'
 
 
-# Today's Date
+# Today's Date / Time
 today = datetime.now()
 
 
