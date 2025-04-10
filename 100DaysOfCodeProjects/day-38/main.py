@@ -27,7 +27,7 @@ today_time = today.strftime('%H:%M:%S')
 exercise = input('Tell me which exercises you did: ')
 
 
-# Nutritionix Params
+# Nutritionix JSON Params
 exercise_params = {
     'query': exercise,
     'gender': 'female',
