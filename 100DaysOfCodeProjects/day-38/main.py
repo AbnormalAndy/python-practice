@@ -47,7 +47,13 @@ exercise_header = {
 
 # Saves JSON response of exercises done and entered into Nutritionix.
 nutritionix_post_response = requests.post(url=EXERCISE_ENDPOINT, json=exercise_params, headers=exercise_header)
+
+
+# Raise Status Error
 nutritionix_post_response.raise_for_status()
+
+
+# Print Text of Response
 nutritionix_response = nutritionix_post_response.json()
 
 
@@ -73,7 +79,13 @@ for i in range(len(nutritionix_response['exercises'])):
 
     # Sheety response after adding to Google Sheets.
     sheety_post_response = requests.post(url=SHEETY_ENDPOINT, json=sheety_params, headers=sheety_header)
+
+
+    # Raise Status Error
     sheety_post_response.raise_for_status()
+
+
+    # Print Text of Response
     print(sheety_post_response.text)
 
 
