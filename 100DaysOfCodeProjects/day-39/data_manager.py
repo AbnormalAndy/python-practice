@@ -45,7 +45,7 @@ if __name__ == '__main__':
 # - Will compare in main after Flight API call.
 # - Create PUT response.
 #     - Will use PUT response when price is lower than in the Google Sheet.
-# - Create an average?
+# - Create an average price over time with a spread.
 
 
 # Example GET Response
