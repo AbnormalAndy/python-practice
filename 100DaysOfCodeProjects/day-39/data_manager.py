@@ -6,41 +6,58 @@ API_KEY_SHEETY = config.API_KEY_SHEETY
 SHEETY_ENDPOINT = 'https://api.sheety.co/99857e1bc2a42bffc6f6a39865ac096e/flightDeals/prices/'
 
 
+SHEETY_HEADER = {
+    'Authorization': f'Bearer {API_KEY_SHEETY}',
+    }
+
+
 class DataManager:
-    # Make class.
-    sheety_params = {
-        # Key must be CAMEL CASE and NO spaces even if the Google Sheets column title is title cased and has spaces.
-        'price': {
-            'city': 'Test',
-            'iataCode': 'TestTestTest',
-            'lowestPrice': 12345,
-        }
-    }
-
-
-    sheety_header = {
-        'Authorization': f'Bearer {API_KEY_SHEETY}',
-    }
+    # Use to Change Sheety Params Values
+    def __init__(self):
+        self.city = 'TestCity'
+        self.iataCode = 'TestIATACode'
+        self.lowestPrice = 0
 
 
     # Use to get data from Sheety to compare to cost.
     def sheety_get_request(self):
-        sheety_get_response = requests.get(url=SHEETY_ENDPOINT, headers=sheety_header)
+        sheety_get_response = requests.get(url=SHEETY_ENDPOINT, headers=SHEETY_HEADER)
         sheety_get_response.raise_for_status()
         sheety_data = sheety_get_response.json()
-        print(sheety_data)
+        return sheety_data
+
+        
+        # DEBUG Statement
+        #print(sheety_data)
 
 
-    # Replace new lowest price; will then send email / SMS.
+    # Replace price if lower than what is on Sheety.
     def sheety_put_request(self):
-        sheety_put_response = requests.put(url=f'{SHEETY_ENDPOINT}2', json=sheety_params, headers=sheety_header)
+        sheety_params = {
+            # Key must be CAMEL CASE and NO spaces even if the Google Sheets column title is title cased and has spaces.
+            'price': {
+                'city': self.city,
+                'iataCode': self.iataCode,
+                'lowestPrice': self.lowestPrice,
+            }
+        }
+
+
+        sheety_put_response = requests.put(url=f'{SHEETY_ENDPOINT}2', json=sheety_params, headers=SHEETY_HEADER)
         sheety_put_response.raise_for_status()
-        print(sheety_put_response.text)
+
+
+        # DEBUG Statement
+        #print(sheety_put_response.text)
 
 
 if __name__ == '__main__':
     test = DataManager()
-    test
+    #test.city = 'Mexico'
+    #test.iataCode = 'MEOW1234'
+    #test.lowestPrice = 30
+    #test.sheety_put_request()
+    test.sheety_get_request()
     
 
 # TO-DO:
