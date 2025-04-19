@@ -1,4 +1,51 @@
-#This file will need to use the DataManager,FlightSearch, FlightData, NotificationManager classes to achieve the program requirements.
+from data_manager import DataManager
+
+
+datamanager = DataManager()
+
+
+data = datamanager.get_request()
+
+
+# Testing retrieving data, changing data, and then retrieving data again..
+print(data['prices'][0])
+print(data['prices'][0]['city'])
+print(data['prices'][0]['iataCode'])
+print(data['prices'][0]['lowestPrice'])
+
+
+datamanager.city = 'Mexico'
+datamanager.iataCode = 'MEOW1234'
+datamanager.lowestPrice = 13
+datamanager.row_number = 2
+
+
+datamanager.put_request()
+
+
+data = datamanager.get_request()
+
+
+print(data['prices'][0])
+print(data['prices'][0]['city'])
+print(data['prices'][0]['iataCode'])
+print(data['prices'][0]['lowestPrice'])
+
+
+# Example GET Response
+#{'prices':
+#   [
+#   {'city': 'Paris', 'iataCode': '', 'lowestPrice': 54, 'id': 2},
+#   {'city': 'Frankfurt', 'iataCode': '', 'lowestPrice': 42, 'id': 3},
+#   {'city': 'Tokyo', 'iataCode': '', 'lowestPrice': 485, 'id': 4},
+#   {'city': 'Hong Kong', 'iataCode': '', 'lowestPrice': 551, 'id': 5},
+#   {'city': 'Istanbul', 'iataCode': '', 'lowestPrice': 95, 'id': 6},
+#   {'city': 'Kuala Lumpur', 'iataCode': '', 'lowestPrice': 414, 'id': 7},
+#   {'city': 'New York', 'iataCode': '', 'lowestPrice': 240, 'id': 8},
+#   {'city': 'San Francisco', 'iataCode': '', 'lowestPrice': 260, 'id': 9},
+#   {'city': 'Dublin', 'iataCode': '', 'lowestPrice': 378, 'id': 10}
+#   ]
+#}
 
 
 # FlightSearch

@@ -17,10 +17,11 @@ class DataManager:
         self.city = 'TestCity'
         self.iataCode = 'TestIATACode'
         self.lowestPrice = 0
+        self.row_number = 0
 
 
     # Use to get data from Sheety to compare to cost.
-    def sheety_get_request(self):
+    def get_request(self):
         sheety_get_response = requests.get(url=SHEETY_ENDPOINT, headers=SHEETY_HEADER)
         sheety_get_response.raise_for_status()
         sheety_data = sheety_get_response.json()
@@ -32,7 +33,7 @@ class DataManager:
 
 
     # Replace price if lower than what is on Sheety.
-    def sheety_put_request(self):
+    def put_request(self):
         sheety_params = {
             # Key must be CAMEL CASE and NO spaces even if the Google Sheets column title is title cased and has spaces.
             'price': {
@@ -43,7 +44,10 @@ class DataManager:
         }
 
 
-        sheety_put_response = requests.put(url=f'{SHEETY_ENDPOINT}2', json=sheety_params, headers=SHEETY_HEADER)
+        row_number = self.row_number
+
+
+        sheety_put_response = requests.put(url=f'{SHEETY_ENDPOINT}{row_number}', json=sheety_params, headers=SHEETY_HEADER)
         sheety_put_response.raise_for_status()
 
 
@@ -56,8 +60,8 @@ if __name__ == '__main__':
     #test.city = 'Mexico'
     #test.iataCode = 'MEOW1234'
     #test.lowestPrice = 30
-    #test.sheety_put_request()
-    test.sheety_get_request()
+    #test.put_request()
+    test.get_request()
     
 
 # TO-DO:
