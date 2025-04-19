@@ -23,15 +23,19 @@ class DataManager:
     }
 
 
-    #sheety_put_response = requests.put(url=f'{SHEETY_ENDPOINT}2', json=sheety_params, headers=sheety_header)
-    #sheety_put_response.raise_for_status()
-    #print(sheety_put_response.text)
+    # Use to get data from Sheety to compare to cost.
+    def sheety_get_request(self):
+        sheety_get_response = requests.get(url=SHEETY_ENDPOINT, headers=sheety_header)
+        sheety_get_response.raise_for_status()
+        sheety_data = sheety_get_response.json()
+        print(sheety_data)
 
 
-    sheety_get_response = requests.get(url=SHEETY_ENDPOINT, headers=sheety_header)
-    sheety_get_response.raise_for_status()
-    sheety_data = sheety_get_response.json()
-    print(sheety_data)
+    # Replace new lowest price; will then send email / SMS.
+    def sheety_put_request(self):
+        sheety_put_response = requests.put(url=f'{SHEETY_ENDPOINT}2', json=sheety_params, headers=sheety_header)
+        sheety_put_response.raise_for_status()
+        print(sheety_put_response.text)
 
 
 if __name__ == '__main__':
