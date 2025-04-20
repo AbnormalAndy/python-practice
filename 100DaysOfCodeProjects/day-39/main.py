@@ -7,7 +7,7 @@ datamanager = DataManager()
 data = datamanager.get_request()
 
 
-# Testing retrieving data, changing data, and then retrieving data again..
+# Testing retrieving data, changing data, and then retrieving data again.
 print(data['prices'][0])
 print(data['prices'][0]['city'])
 print(data['prices'][0]['iataCode'])
