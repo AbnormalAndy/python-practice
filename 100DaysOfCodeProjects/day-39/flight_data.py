@@ -2,6 +2,8 @@ class FlightData:
     #This class is responsible for structuring the flight data.
     pass
 
+
+    def __init__(self, iata_origin, iata_destination, departure_date, return_date, max_price):
     # Lowest Flight
     # Find details in data
     lowest_price_one = {
