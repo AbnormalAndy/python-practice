@@ -14,12 +14,11 @@ class FlightData:
 
 
     lowest_price_one = {
-        'origin': '',
-        'destination': '',
-        'departureDate': '',
-        'returnDate': '',
-        'price': 190.00,
-        'flightOffers': '',
+        'origin': self.iata_origin,
+        'destination': self.iata_destination,
+        'departureDate': self.departure_date,
+        'returnDate': self.return_date,
+        'price': self.max_price,
     }
 
 
