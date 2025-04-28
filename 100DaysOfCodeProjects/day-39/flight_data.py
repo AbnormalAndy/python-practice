@@ -22,6 +22,9 @@ class FlightData:
             'price': self.max_price,
         }
 
+
+        # Import data and then sort for lowest.
+
         '''
         for flight in range(len(test_data)):
             if lowest_price_one['price'] > float(test_data[flight]['price']['total']):
