@@ -14,6 +14,7 @@ class FlightData:
 
     # Get lowest price of flight.
     def get_lowest_price(self):
+        # Lowest Priced Flight
         lowest_price_one = {
             'origin': self.iata_origin,
             'destination': self.iata_destination,
