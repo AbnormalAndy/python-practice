@@ -1,7 +1,6 @@
 class FlightData:
     def __init__(self, iata_origin, iata_destination, departure_date, return_date, max_price):
     # Lowest Flight
-    # Find details in data
         self.iata_origin = iata_origin
         self.iata_destination = iata_destination
         self.departure_date = departure_date
